@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- `ADP.min.md`: semantically compressed machine-consumption distribution.
+- `docs/MINIFIED.md`: compression contract and maintenance guidance.
+- Validation for compact/full version alignment, semantic anchors, and size ceiling.
+
 ## [2.3.0] - 2026-09-21
 ### Added
 - Public open-source ADP repository.
