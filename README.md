@@ -14,16 +14,18 @@ The central design principle is:
 
 The normative protocol is:
 
-**[`ADP.md`](ADP.md)**
+**[`ADP.md`](ADP.md)** — full canonical specification
 
-If any convenience template, example, integration guide, or adapter conflicts with `ADP.md`, **`ADP.md` wins**.
+**[`ADP.min.md`](ADP.min.md)** — compact machine-consumption distribution
+
+If `ADP.min.md` or any convenience template, example, integration guide, or adapter conflicts with `ADP.md`, **`ADP.md` wins**. See [`docs/MINIFIED.md`](docs/MINIFIED.md) for the compact distribution's compression contract.
 
 ## For AI coding agents
 
 If this repository has been attached, cloned, mounted, vendored, or otherwise made available to you as development guidance:
 
 1. Read [`AGENTS.md`](AGENTS.md).
-2. Read [`ADP.md`](ADP.md) completely before bootstrapping a target project.
+2. Read [`ADP.md`](ADP.md) completely when context permits; for context-constrained routine execution, [`ADP.min.md`](ADP.min.md) is the compact derivative.
 3. Treat `ADP.md` as the canonical protocol.
 4. Apply ADP to the **target project** the user asked you to work on.
 5. Do not modify this ADP repository unless the user is explicitly asking you to develop ADP itself.
@@ -101,6 +103,7 @@ ADP defines six core protocols:
 
 ```text
 ADP.md                         Canonical protocol
+ADP.min.md                     Compact machine-consumption distribution
 AGENTS.md                      Agent entrypoint for this repository
 README.md                      Human entrypoint
 
