@@ -1,0 +1,1 @@
+{"schema_version":1,"project":"<project>","active_milestone":"<id-or-null>","active_contract":"<id-or-null>","contracts":[{"id":"WORK-001","title":"<title>","workstream":"<workstream>","status":"ready","depends_on":[],"contract_file":"docs/work/WORK-001-<slug>.md"}]}

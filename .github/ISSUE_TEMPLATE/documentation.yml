@@ -1,0 +1,14 @@
+name: Documentation improvement
+description: Suggest clearer examples, explanations, or integration guidance.
+title: "[Docs]: "
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: File / section
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Suggested improvement
+    validations:
+      required: true

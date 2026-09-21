@@ -1,0 +1,17 @@
+> Convenience template derived from ADP. If this template conflicts with `ADP.md`, `ADP.md` wins.
+
+# Security Model
+
+## Security goals
+## Trust boundaries
+## Authentication
+## Authorization
+## Sensitive data
+## Secrets
+## Input/output boundaries
+## Logging restrictions
+## External integrations
+## Dependency security
+## Security validation
+## Known risks
+## Incident / recovery considerations

@@ -1,0 +1,14 @@
+> Convenience template derived from ADP. If this template conflicts with `ADP.md`, `ADP.md` wins.
+
+# Delivery
+
+## Environments
+## Configuration
+## Build artifact
+## Release process
+## Deployment process
+## Database migrations
+## Smoke validation
+## Rollback
+## Observability after release
+## Recovery / troubleshooting

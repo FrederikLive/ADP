@@ -1,0 +1,12 @@
+> Convenience template derived from ADP. If this template conflicts with `ADP.md`, `ADP.md` wins.
+
+# ADR-XXXX: <Decision title>
+
+- Status: proposed | accepted | superseded | rejected
+- Date:
+
+## Context
+## Decision
+## Alternatives considered
+## Consequences
+## Validation / follow-up

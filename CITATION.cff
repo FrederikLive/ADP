@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use ADP in research or published work, please cite this repository."
+title: "ADP — Agent Development Protocol"
+type: software
+authors:
+  - family-names: "Smith"
+    given-names: "Frederik"
+    email: "w5zk8yjto@mozmail.com"
+version: "2.3.0"
+date-released: "2026-09-21"
+url: "https://github.com/FrederikLive/ADP"
+repository-code: "https://github.com/FrederikLive/ADP"
+license: "MIT"

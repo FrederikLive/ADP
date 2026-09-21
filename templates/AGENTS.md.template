@@ -1,0 +1,30 @@
+> Convenience template derived from ADP. If this template conflicts with `ADP.md`, `ADP.md` wins.
+
+# AGENTS.md
+
+## Project
+<project purpose>
+
+## Repository map
+- `docs/PRODUCT.md`
+- `docs/ARCHITECTURE.md`
+- `docs/QUALITY.md`
+- `docs/STATUS.md`
+- `docs/CONTINUITY.md`
+
+## Standard commands
+- Setup: `<command>`
+- Dev: `<command>`
+- Check: `<command>`
+- Test: `<command>`
+- Build: `<command>`
+- CI-equivalent: `<command>`
+
+## Autonomy
+Default: HIGH. Continue ordinary authorized work. Stop only at hard checkpoints, genuine external blockers, completed objective, or explicit user instruction.
+
+## Cold-start / resume
+Read continuity/status/active contract; inspect Git; run a cheap health check; continue the exact next unblocked action.
+
+## Safety
+Never expose secrets or discard unrelated user changes. Ask before destructive shared/production operations, history rewrites, publishing, paid provisioning, credential rotation, or unapproved production deployment.

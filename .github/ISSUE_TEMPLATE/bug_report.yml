@@ -1,0 +1,22 @@
+name: Protocol/documentation problem
+description: Report an inconsistency, error, or unclear ADP behavior.
+title: "[Bug]: "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: ADP version
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior/text
+    validations:
+      required: true
