@@ -1087,6 +1087,8 @@ Suggested schema:
   "project": "example",
   "active_milestone": "M1",
   "active_contract": "WORK-002",
+  "next_milestone": "M1",
+  "next_contract": "WORK-003",
   "contracts": [
     {
       "id": "WORK-001",
@@ -1124,6 +1126,7 @@ Rules:
 
 - IDs should be stable.
 - Dependencies should reference IDs.
+- Optional `next_milestone` and `next_contract` should identify the selected machine-readable continuation target when known.
 - The ledger tracks execution state, not full requirements.
 - Contract Markdown remains the rich explanation.
 - `PRODUCT.md` remains the product authority.
@@ -1702,7 +1705,7 @@ Suggested structure:
 
 ## Risks / decisions
 
-## Handoff / exact next action
+## Handoff / next recommended phase / exact next action
 ```
 
 Small fixes do not require work files.
@@ -3348,6 +3351,8 @@ Keep it concise enough for a cold agent to read immediately.
   "project": "<project>",
   "active_milestone": "<id-or-null>",
   "active_contract": "<id-or-null>",
+  "next_milestone": "<id-or-null>",
+  "next_contract": "<id-or-null>",
   "contracts": [
     {
       "id": "WORK-001",
