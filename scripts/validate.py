@@ -13,7 +13,7 @@ if f"Version {v}" not in adp: errors.append("ADP.md version mismatch")
 if "ADP means Agent Development Protocol" not in adp: errors.append("ADP identity missing")
 mini=(ROOT/"ADP.min.md").read_text()
 if f"version:** {v}" not in mini: errors.append("ADP.min.md version mismatch")
-anchors=["Authorization Envelope","Autonomous continuation","Soft checkpoint","Hard checkpoint","VERIFIED","FAILED","NOT RUN","NOT AVAILABLE","Continuity protocol","Cold-start successor","WORK.json","Git and file safety","Security and external side effects","Definition of done"]
+anchors=["Authorization Envelope","Autonomous continuation","Transition transparency","Transition Brief","Next recommended phase","Exact next action","Soft checkpoint","Hard checkpoint","VERIFIED","FAILED","NOT RUN","NOT AVAILABLE","Continuity protocol","Cold-start successor","WORK.json","Git and file safety","Security and external side effects","Definition of done"]
 for a in anchors:
     if a.lower() not in mini.lower(): errors.append("ADP.min.md missing semantic anchor: "+a)
 ratio=len(mini.encode())/max(1,len(adp.encode()))

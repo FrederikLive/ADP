@@ -1,6 +1,6 @@
 # ADP.md
 
-> **Agent Development Protocol — Version 2.3.0 (2026-09-21)**
+> **Agent Development Protocol — Version 2.4.0 (2026-09-23)**
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
@@ -20,7 +20,7 @@
 >
 > This file is a **one-time bootstrap specification**, not the permanent day-to-day agent instruction file. After bootstrapping, the repository MUST use a concise root `AGENTS.md` as its canonical operational entry point for coding agents.
 >
-> Version 2.3.0 formalizes the public repository for **ADP — Agent Development Protocol** and retains the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and a **Continuity Protocol** that lets a fresh agent resume work without depending on the previous conversation.
+> Version 2.4.0 adds **Transition Transparency**: meaningful Contract and Milestone boundaries become visible to the human operator through concise **Transition Briefs** that state what completed, what was verified, what phase comes next, why it comes next, and whether execution will continue, checkpoint, or complete. It preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
 
 ---
 
@@ -959,6 +959,8 @@ It should contain:
 
 ## Blocker / investigation
 
+## Next recommended phase
+
 ## Exact next action
 
 ## Decisions made since last checkpoint
@@ -1085,6 +1087,8 @@ Suggested schema:
   "project": "example",
   "active_milestone": "M1",
   "active_contract": "WORK-002",
+  "next_milestone": "M1",
+  "next_contract": "WORK-003",
   "contracts": [
     {
       "id": "WORK-001",
@@ -1122,6 +1126,7 @@ Rules:
 
 - IDs should be stable.
 - Dependencies should reference IDs.
+- Optional `next_milestone` and `next_contract` should identify the selected machine-readable continuation target when known.
 - The ledger tracks execution state, not full requirements.
 - Contract Markdown remains the rich explanation.
 - `PRODUCT.md` remains the product authority.
@@ -1161,10 +1166,21 @@ After completing a unit of work:
 Human acknowledgement such as "continue", "looks good", "proceed", or
 "carry on" is not required between ordinary work items.
 
+At meaningful Contract or Milestone boundaries, emit a concise user-facing
+Transition Brief when the harness can surface progress while work continues.
+Reporting the transition MUST NOT create a routine approval gate.
+
 Stop only for a hard checkpoint, genuine blocker requiring external
 information/authority, completion of the authorized objective, or explicit
 user instruction to stop.
 ```
+
+When selecting the next recommended phase, prefer authorized work whose
+dependencies are satisfied and which most directly advances the current
+Milestone acceptance criteria. Among otherwise suitable candidates, prefer
+work that unblocks important dependents or reduces material product,
+architecture, security, migration, or verification risk before optional
+polish. Keep the choice proportional and explain the rationale briefly.
 
 The objective is engineering completion, not ending the conversational turn.
 
@@ -1461,15 +1477,18 @@ Suggested structure:
 ```md
 # Project status
 
-## Current phase
+## Current milestone / phase
 
-## Done
+## Recently completed
 
 ## In progress
 
 ## Blocked
 
-## Next
+## Next recommended phase
+- Outcome:
+- Why next:
+- First action:
 
 ## Known issues
 
@@ -1501,6 +1520,7 @@ It answers:
 - what has just been completed;
 - what is currently failing;
 - what the last known-good state is;
+- what meaningful development phase should happen next;
 - what exact action should happen next;
 - whether uncommitted work exists.
 
@@ -1685,7 +1705,7 @@ Suggested structure:
 
 ## Risks / decisions
 
-## Handoff / exact next action
+## Handoff / next recommended phase / exact next action
 ```
 
 Small fixes do not require work files.
@@ -2622,7 +2642,7 @@ If a new improvement idea was discovered but is outside scope, add it to `IDEAS.
 
 ---
 
-# 47. HANDOFF
+# 47. HANDOFF AND TRANSITION TRANSPARENCY
 
 Every substantial completed task should report:
 
@@ -2636,6 +2656,77 @@ Every substantial completed task should report:
 - next highest-value step.
 
 Use explicit verification states.
+
+## 47.1 Transition Brief
+
+ADP projects MUST make meaningful development transitions legible to the
+human operator.
+
+After a substantial Contract completes, a Milestone completes or materially
+changes, a hard checkpoint is reached, or the authorized objective completes,
+the agent MUST determine the current project state and the recommended next
+development phase.
+
+A **Transition Brief** is the user-facing representation of that transition.
+When applicable it MUST identify:
+
+- **Completed** — the Contract, Milestone, or meaningful outcome just completed;
+- **Verification** — VERIFIED / FAILED / NOT RUN / NOT AVAILABLE as applicable;
+- **Current milestone** — the larger outcome currently being pursued;
+- **Blockers / risks** — only material items that affect what happens next;
+- **Next recommended phase** — the next meaningful Contract, Workstream, or
+  Milestone outcome;
+- **Why this is next** — concise dependency, value, or risk rationale;
+- **First action** — the first concrete action that begins the next phase;
+- **Execution state** — CONTINUE, CHECKPOINT, or COMPLETE.
+
+The **Next recommended phase** is human-scale project direction. It SHOULD
+describe a meaningful engineering or product outcome rather than an arbitrary
+chat step or low-level edit.
+
+The **Exact next action** is agent-scale resume state. It MUST remain concrete
+enough that a cold successor can continue without reconstructing the plan.
+
+These concepts MUST remain distinct even when they happen to point at the same
+work.
+
+## 47.2 Transition execution states
+
+Use exactly one transition execution state when a Transition Brief is emitted:
+
+- **CONTINUE** — the next work is authorized, dependency-ready, and unblocked.
+  The brief is informational; continue automatically.
+- **CHECKPOINT** — a hard checkpoint or genuine external blocker requires human
+  authority or information before safe progress can continue.
+- **COMPLETE** — the authorized objective is satisfied. Future work MAY be
+  suggested, but it MUST be identified as outside the completed objective
+  unless already authorized.
+
+A Transition Brief MUST NOT be phrased as a routine permission request when
+the execution state is CONTINUE.
+
+## 47.3 Persistence and presentation
+
+Transition Briefs do not become another source of truth.
+
+Persist their underlying state through the existing control plane:
+
+- `docs/STATUS.md` owns the human-readable **Next recommended phase**, including
+  a short rationale and first action;
+- `docs/CONTINUITY.md` records the same directional context plus the **Exact
+  next action** required for cold resume;
+- optional `.project/WORK.json` MAY record `next_milestone` and `next_contract`
+  identifiers for machine-readable orchestration.
+
+If a harness can surface progress messages while execution continues, the
+agent SHOULD emit a Transition Brief at meaningful boundaries.
+
+If it cannot, the latest relevant Transition Brief MUST appear in the next
+user-facing handoff or completion response.
+
+Do not emit Transition Briefs after every Atomic Unit. Aggregate rapid,
+low-value transitions so status reporting does not interrupt engineering work
+or overwhelm the user.
 
 ---
 
@@ -2658,9 +2749,9 @@ Before reporting bootstrap completion, verify as much of the following as applie
 - no obvious secret was introduced;
 - `AGENTS.md` exists and is concise;
 - adapters reference the canonical instruction file rather than duplicate it;
-- `STATUS.md` reflects reality;
-- `CONTINUITY.md` contains an exact resume point;
-- a fresh agent could identify the next action without the previous conversation.
+- `STATUS.md` reflects reality and identifies the next recommended phase when one exists;
+- `CONTINUITY.md` contains directional context and an exact resume point;
+- a fresh agent could identify both the next meaningful phase and exact next action without the previous conversation.
 
 If something cannot be verified, report it as `NOT AVAILABLE` or `NOT RUN`.
 
@@ -3010,15 +3101,18 @@ Remove irrelevant sections rather than filling them with noise.
 ```md
 # Project status
 
-## Current phase
+## Current milestone / phase
 
-## Done
+## Recently completed
 
 ## In progress
 
 ## Blocked
 
-## Next
+## Next recommended phase
+- Outcome:
+- Why next:
+- First action:
 
 ## Known issues
 
@@ -3234,6 +3328,8 @@ that supersedes the old one rather than rewriting accepted history.
 
 ## Blocker / investigation
 
+## Next recommended phase
+
 ## Exact next action
 
 ## Decisions made since last checkpoint
@@ -3255,6 +3351,8 @@ Keep it concise enough for a cold agent to read immediately.
   "project": "<project>",
   "active_milestone": "<id-or-null>",
   "active_contract": "<id-or-null>",
+  "next_milestone": "<id-or-null>",
+  "next_contract": "<id-or-null>",
   "contracts": [
     {
       "id": "WORK-001",
@@ -3769,10 +3867,12 @@ If you are an AI coding agent reading this file because a user asked you to boot
 34. Maintain `docs/CONTINUITY.md` as a concise cold-resume packet.
 35. Use optional `.project/WORK.json` for substantial multi-contract projects.
 36. Create soft checkpoints at meaningful transitions and continue automatically.
-37. Stop only for hard checkpoints, genuine external blockers, completed authorized objectives, or explicit user instruction.
-38. When context pressure rises, persist state before exhaustion and use compaction/reset/continuation if the harness supports it.
-39. On a cold start, verify the predecessor's claims against Git and executable checks before continuing.
-40. Treat the repository—not the chat session—as durable project memory.
+37. Emit Transition Briefs at meaningful Contract/Milestone boundaries without turning ordinary continuation into an approval gate.
+38. Distinguish the human-scale Next recommended phase from the agent-scale Exact next action.
+39. Stop only for hard checkpoints, genuine external blockers, completed authorized objectives, or explicit user instruction.
+40. When context pressure rises, persist state before exhaustion and use compaction/reset/continuation if the harness supports it.
+41. On a cold start, verify the predecessor's claims against Git and executable checks before continuing.
+42. Treat the repository—not the chat session—as durable project memory.
 
 ---
 

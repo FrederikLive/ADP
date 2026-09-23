@@ -1,7 +1,7 @@
 # ADP.min.md — Agent Development Protocol, Compact Distribution
 
 **Protocol:** ADP — Agent Development Protocol
-**Protocol version:** 2.3.0
+**Protocol version:** 2.4.0
 **Distribution:** compact / machine-consumption
 **Canonical source:** `ADP.md`
 **Author:** Frederik Smith
@@ -62,8 +62,8 @@ Adapt to equivalent existing canonical artifacts; do not create empty ceremonial
 **PRODUCT.md:** problem/users/goals/non-goals/workflows/requirements/acceptance/domain assumptions.
 **ARCHITECTURE.md:** current components/boundaries/data/persistence/integrations/runtime/failures/observability/invariants/debt.
 **QUALITY.md:** checks/tests/security/accessibility/performance as applicable; commands/gates/gaps.
-**STATUS.md:** short milestone + done/in-progress/blocked/next + last verified state; not a diary.
-**CONTINUITY.md:** operational resume snapshot: objective/milestone/workstream/contract, position, known-good state, verification, WIP, blocker, exact next action, decisions, Git/workspace state, checkpoint.
+**STATUS.md:** short milestone + recently-completed/in-progress/blocked + next recommended phase (outcome, why next, first action) + last verified state; not a diary.
+**CONTINUITY.md:** operational resume snapshot: objective/milestone/workstream/contract, position, known-good state, verification, WIP, blocker, next recommended phase, exact next action, decisions, Git/workspace state, checkpoint.
 **IDEAS.md:** candidates only; **idea ≠ scope**.
 **ADRs:** significant durable architecture decisions, not routine choices.
 
@@ -120,6 +120,17 @@ After ordinary completion: verify → persist durable state → update contract/
 Stop only for: completed authorized objective; hard checkpoint; genuine external blocker; explicit stop/pause; or work outside authorization envelope.
 
 Progress updates are informational, not approval requests.
+
+## 7A. Transition transparency
+At meaningful substantial Contract/Milestone boundaries, hard checkpoints, or objective completion, emit a concise **Transition Brief** when the harness can surface it. Include as applicable: completed outcome; verification state; current milestone; material blockers/risks; **Next recommended phase**; why it is next; first action; and execution state `CONTINUE | CHECKPOINT | COMPLETE`.
+
+**Next recommended phase** is human-scale direction. **Exact next action** is agent-scale cold-resume state; keep them distinct.
+
+For `CONTINUE`, the brief is informational: do not ask routine permission; continue automatically. `CHECKPOINT` is reserved for a hard checkpoint/external blocker. `COMPLETE` means the authorized objective is satisfied; future suggestions outside it must be labeled as such.
+
+Persist the next recommended phase/rationale in `STATUS.md`, directional context + exact action in `CONTINUITY.md`, and optionally `next_milestone`/`next_contract` identifiers in `WORK.json`. Do not emit a brief after every Atomic Unit; aggregate low-value transitions.
+
+Choose next work from authorized, dependency-ready candidates that best advance current milestone acceptance criteria; prefer important unblockers and material risk reduction before optional polish.
 
 ## 8. Soft and Hard checkpoints
 **Soft checkpoint:** persist, then continue. Use after substantial contract completion, major refactor/migration, public interface/schema change, significant architecture decision, important test-state change, context pressure, or meaningful investigation result. Finish current atomic unit if safe, validate narrowly, update durable state/known-good revision, checkpoint Git if appropriate, continue.
@@ -190,7 +201,7 @@ Known-good checkpoint: record coherent revision/state, validations/results, envi
 Successors MUST verify predecessor claims against code/Git/tests.
 
 ## 12. Optional WORK.json
-For substantial multi-contract work, `.project/WORK.json` MAY hold machine-readable operational state: schema_version, project, active_milestone, active_contract, contracts[] {id,title,workstream,status,dependencies,contract_file}.
+For substantial multi-contract work, `.project/WORK.json` MAY hold machine-readable operational state: schema_version, project, active_milestone, active_contract, optional next_milestone/next_contract, contracts[] {id,title,workstream,status,dependencies,contract_file}.
 
 Statuses: `candidate | ready | in_progress | blocked | implemented | verifying | verified | deferred | cancelled`.
 
@@ -287,7 +298,7 @@ Objective is done only when applicable:
 “Code written” ≠ done.
 
 ## 23. Final handoff
-When objective completes or hard blocker stops work, report concisely: changes; verification states; important decisions/tradeoffs; blockers/risks; exact next action if unfinished; relevant files/commands/revision.
+When objective completes or a hard blocker stops work, report concisely: changes; verification states; important decisions/tradeoffs; blockers/risks; the latest Transition Brief (including next recommended phase and execution state); exact next action if unfinished; relevant files/commands/revision.
 
 Do not ask “would you like me to continue?” while authorized work remains.
 
@@ -301,17 +312,19 @@ When told to apply ADP:
 6. Use contracts for substantial work; atomic units for implementation.
 7. Work at HIGH autonomy inside Authorization Envelope.
 8. Continue automatically across ordinary boundaries.
-9. Soft checkpoint to persist/continue.
-10. Stop only at hard checkpoint, genuine blocker, objective completion, explicit stop.
-11. Retry intelligently before escalation.
-12. Use VERIFIED/FAILED/NOT RUN/NOT AVAILABLE.
-13. Keep Git recoverable; protect unknown/unrelated data.
-14. Update canonical owners when durable facts change.
-15. Maintain continuity + known-good state.
-16. Under context pressure, checkpoint before exhaustion.
-17. Make repository cold-resumable.
-18. Prefer executable enforcement/repository-native state.
-19. Finish with evidence, not confidence language.
+9. At meaningful boundaries, show a Transition Brief without creating an approval gate.
+10. Distinguish Next recommended phase from Exact next action.
+11. Soft checkpoint to persist/continue.
+12. Stop only at hard checkpoint, genuine blocker, objective completion, explicit stop.
+13. Retry intelligently before escalation.
+14. Use VERIFIED/FAILED/NOT RUN/NOT AVAILABLE.
+15. Keep Git recoverable; protect unknown/unrelated data.
+16. Update canonical owners when durable facts change.
+17. Maintain continuity + known-good state.
+18. Under context pressure, checkpoint before exhaustion.
+19. Make repository cold-resumable.
+20. Prefer executable enforcement/repository-native state.
+21. Finish with evidence, not confidence language.
 
 ---
-**End compact ADP 2.3.0.** Read `ADP.md` for full normative detail and dispute resolution.
+**End compact ADP 2.4.0.** Read `ADP.md` for full normative detail and dispute resolution.
