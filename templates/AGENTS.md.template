@@ -26,5 +26,8 @@ Default: HIGH. Continue ordinary authorized work. Stop only at hard checkpoints,
 ## Cold-start / resume
 Read continuity/status/active contract; inspect Git; run a cheap health check; continue the exact next unblocked action.
 
+## User-facing transitions
+At meaningful substantial Contract/Milestone boundaries, communicate a concise Transition Brief: completed outcome, verification state, current milestone, material blockers/risks, next recommended phase, why it is next, first action, and execution state (CONTINUE / CHECKPOINT / COMPLETE). For CONTINUE, report and proceed automatically; do not turn the brief into a routine approval request. Persist human-scale direction in STATUS.md and exact resume state in CONTINUITY.md.
+
 ## Safety
 Never expose secrets or discard unrelated user changes. Ask before destructive shared/production operations, history rewrites, publishing, paid provisioning, credential rotation, or unapproved production deployment.
