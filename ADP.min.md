@@ -141,11 +141,11 @@ Mutation posture:
 - **READ_ONLY** — inspect/research/audit/reproduce/report; no project mutation except a narrowly authorized report/evidence artifact.
 - **MUTATING** — modify only within delegated scope and authorization.
 
-Concurrent MUTATING lanes MUST use separate writable workspaces and change lineages (for example worktree + dedicated branch, isolated checkout, or harness equivalent). A branch alone is insufficient when agents share one working directory. If safe isolation is unavailable, serialize mutation. Shared mutable databases/services/test environments need equivalent collision controls.
+**Concurrent mutation isolation:** concurrent MUTATING lanes MUST use separate writable workspaces and change lineages (for example worktree + dedicated branch, isolated checkout, or harness equivalent). A branch alone is insufficient when agents share one working directory. If safe isolation is unavailable, serialize mutation. Shared mutable databases/services/test environments need equivalent collision controls.
 
 Prefer non-overlapping mutable scope. If overlap is unavoidable, define ownership and integration order instead of allowing competing simultaneous edits.
 
-Worker completion is provisional evidence. Before authoritative VERIFIED state, the coordinator MUST reconcile user intent, Contract, canonical docs, actual diff/artifacts, acceptance criteria, verification evidence, dependencies/integration, and unrelated-change safety. Higher-risk work warrants independent rerun/review; low-risk inspectable worker evidence MAY be reused when sufficient.
+**Reconciliation:** worker completion is provisional evidence. Before authoritative VERIFIED state, the coordinator MUST reconcile user intent, Contract, canonical docs, actual diff/artifacts, acceptance criteria, verification evidence, dependencies/integration, and unrelated-change safety. Higher-risk work warrants independent rerun/review; low-risk inspectable worker evidence MAY be reused when sufficient.
 
 Never reset/delete/recycle a delegated workspace with unresolved unlanded work unless it was safely preserved/integrated or discard of that specific work was explicitly authorized. On worker failure, preserve useful changes/evidence and recovery state before cleanup/relaunch.
 
