@@ -1,7 +1,7 @@
 # ADP.min.md — Agent Development Protocol, Compact Distribution
 
 **Protocol:** ADP — Agent Development Protocol
-**Protocol version:** 2.4.0
+**Protocol version:** 2.5.0
 **Distribution:** compact / machine-consumption
 **Canonical source:** `ADP.md`
 **Author:** Frederik Smith
@@ -132,6 +132,27 @@ Persist the next recommended phase/rationale in `STATUS.md`, directional context
 
 Choose next work from authorized, dependency-ready candidates that best advance current milestone acceptance criteria; prefer important unblockers and material risk reduction before optional polish.
 
+## 7B. Delegated and concurrent execution
+Direct execution is the default when one agent can complete the work coherently. Delegate only when independence, parallelism, specialization, review separation, or context partitioning materially improves delivery. Delegation MUST NOT expand the Authorization Envelope, hard-checkpoint authority, product scope, destructive authority, external side effects, or material spending.
+
+For substantial delegated work, the coordinating agent provides a compact **Execution Brief** carrying the relevant user/product intent, Contract/outcome, owned scope/out-of-scope, acceptance criteria, dependencies/canonical references, mutation posture, authority boundaries, required verification, and handoff expectations. The brief is a generated projection, not a new source of truth; repair it when higher-authority instructions or canonical docs change.
+
+Mutation posture:
+- **READ_ONLY** — inspect/research/audit/reproduce/report; no project mutation except a narrowly authorized report/evidence artifact.
+- **MUTATING** — modify only within delegated scope and authorization.
+
+Concurrent MUTATING lanes MUST use separate writable workspaces and change lineages (for example worktree + dedicated branch, isolated checkout, or harness equivalent). A branch alone is insufficient when agents share one working directory. If safe isolation is unavailable, serialize mutation. Shared mutable databases/services/test environments need equivalent collision controls.
+
+Prefer non-overlapping mutable scope. If overlap is unavoidable, define ownership and integration order instead of allowing competing simultaneous edits.
+
+Worker completion is provisional evidence. Before authoritative VERIFIED state, the coordinator MUST reconcile user intent, Contract, canonical docs, actual diff/artifacts, acceptance criteria, verification evidence, dependencies/integration, and unrelated-change safety. Higher-risk work warrants independent rerun/review; low-risk inspectable worker evidence MAY be reused when sufficient.
+
+Never reset/delete/recycle a delegated workspace with unresolved unlanded work unless it was safely preserved/integrated or discard of that specific work was explicitly authorized. On worker failure, preserve useful changes/evidence and recovery state before cleanup/relaunch.
+
+The coordinator is normally the primary human-facing interface and uses existing Transition Briefs; worker completion does not create a routine permission gate. Prefer event-driven completion/escalation over model polling when the harness supports it. Keep process/session/pane/watch state ephemeral; persist only recovery-relevant delegated state.
+
+ADP conformance never requires delegation. If delegation is unavailable or not beneficial, execute directly.
+
 ## 8. Soft and Hard checkpoints
 **Soft checkpoint:** persist, then continue. Use after substantial contract completion, major refactor/migration, public interface/schema change, significant architecture decision, important test-state change, context pressure, or meaningful investigation result. Finish current atomic unit if safe, validate narrowly, update durable state/known-good revision, checkpoint Git if appropriate, continue.
 
@@ -201,7 +222,7 @@ Known-good checkpoint: record coherent revision/state, validations/results, envi
 Successors MUST verify predecessor claims against code/Git/tests.
 
 ## 12. Optional WORK.json
-For substantial multi-contract work, `.project/WORK.json` MAY hold machine-readable operational state: schema_version, project, active_milestone, active_contract, optional next_milestone/next_contract, contracts[] {id,title,workstream,status,dependencies,contract_file}.
+For substantial multi-contract work, `.project/WORK.json` MAY hold machine-readable operational state: schema_version, project, active_milestone, active_contract, optional next_milestone/next_contract, contracts[] {id,title,workstream,status,dependencies,contract_file, optional execution {mode,mutation,branch}}. Execution metadata is durable recovery state only; transient worker/process/session identifiers stay ephemeral.
 
 Statuses: `candidate | ready | in_progress | blocked | implemented | verifying | verified | deferred | cancelled`.
 
@@ -327,4 +348,4 @@ When told to apply ADP:
 21. Finish with evidence, not confidence language.
 
 ---
-**End compact ADP 2.4.0.** Read `ADP.md` for full normative detail and dispute resolution.
+**End compact ADP 2.5.0.** Read `ADP.md` for full normative detail and dispute resolution.
