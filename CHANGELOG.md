@@ -13,6 +13,7 @@
 - Explicit preservation rule for unresolved unlanded delegated work.
 - Optional durable per-contract execution metadata in `.project/WORK.json` and its schema.
 - Delegation-safe conformance, compatibility, glossary, research, compact-distribution, and validation guidance.
+- Version-controlled GitHub Wiki source covering usage, core concepts, autonomy, delegated execution, verification, continuity, transition transparency, control-plane ownership, WORK.json, conformance/versioning, and FAQ.
 
 ### Changed
 - Generated `AGENTS.md` guidance now includes concise delegation/concurrency invariants.
