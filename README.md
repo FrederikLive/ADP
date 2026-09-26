@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml/badge.svg)](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Protocol Version](https://img.shields.io/badge/ADP-2.4.0-blue.svg)](VERSION)
+[![Protocol Version](https://img.shields.io/badge/ADP-2.5.0-blue.svg)](VERSION)
 
 **ADP (Agent Development Protocol)** is a vendor-neutral protocol for structuring software projects so capable AI coding agents can bootstrap, understand, build, test, verify, continue, recover, and hand work to another agent with minimal unnecessary human intervention.
 
@@ -90,15 +90,16 @@ See [`docs/USING_ADP.md`](docs/USING_ADP.md) for detailed integration patterns.
 
 ## What ADP establishes
 
-ADP defines seven core protocols:
+ADP defines eight core protocols:
 
 1. **Bootstrap Protocol** — how a new or existing repository is initialized.
 2. **Autonomy Protocol** — what an agent may do without repeated approval.
 3. **Work Protocol** — Project → Milestone → Workstream → Contract → Atomic Unit → Evidence.
-4. **Verification Protocol** — how work is proven correct.
-5. **Continuity Protocol** — how project state survives context windows and agent replacement.
-6. **Transition Transparency Protocol** — how meaningful development boundaries are shown to humans without turning ordinary continuation into approval gates.
-7. **Escalation Protocol** — when human involvement is genuinely required.
+4. **Delegated & Concurrent Execution Protocol** — when to delegate, how concurrent mutation is isolated, and how delegated results are reconciled.
+5. **Verification Protocol** — how work is proven correct.
+6. **Continuity Protocol** — how project state survives context windows and agent replacement.
+7. **Transition Transparency Protocol** — how meaningful development boundaries are shown to humans without turning ordinary continuation into approval gates.
+8. **Escalation Protocol** — when human involvement is genuinely required.
 
 ## Repository map
 

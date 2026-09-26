@@ -1,6 +1,6 @@
 # ADP.md
 
-> **Agent Development Protocol — Version 2.4.0 (2026-09-23)**
+> **Agent Development Protocol — Version 2.5.0 (2026-09-27)**
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
@@ -20,7 +20,7 @@
 >
 > This file is a **one-time bootstrap specification**, not the permanent day-to-day agent instruction file. After bootstrapping, the repository MUST use a concise root `AGENTS.md` as its canonical operational entry point for coding agents.
 >
-> Version 2.4.0 adds **Transition Transparency**: meaningful Contract and Milestone boundaries become visible to the human operator through concise **Transition Briefs** that state what completed, what was verified, what phase comes next, why it comes next, and whether execution will continue, checkpoint, or complete. It preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
+> Version 2.5.0 adds **Delegated & Concurrent Execution**: ADP now defines when delegation is useful, how user intent survives delegation, how concurrent mutating agents are isolated, how delegated results are reconciled before becoming authoritative project state, and how unlanded delegated work is preserved. Delegation remains optional and proportional: direct single-agent execution is still the default when it is simpler or safer. Version 2.5.0 builds on Version 2.4 Transition Transparency and preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
 
 ---
 
@@ -51,6 +51,9 @@ It defines how a project should be structured so that one or more AI coding agen
 - bootstrap a new repository or adapt an existing one;
 - understand product intent and architecture;
 - decompose work into milestones, workstreams, contracts, atomic units, and evidence;
+- execute work directly or delegate it when delegation materially improves delivery;
+- preserve user/product intent when work is delegated;
+- isolate concurrent mutating execution and reconcile delegated results before accepting them as project state;
 - operate with high autonomy inside an explicit authorization envelope;
 - test and verify work before claiming completion;
 - checkpoint progress without requiring constant human acknowledgement;
@@ -871,6 +874,287 @@ Examples:
 
 ---
 
+# DELEGATED AND CONCURRENT EXECUTION PROTOCOL
+
+ADP supports both direct single-agent execution and delegated/concurrent execution.
+
+The objective is **not** to maximize the number of agents. The objective is to use the **smallest execution topology that materially improves the probability, speed, safety, or quality of completing the user's authorized objective**.
+
+Delegation is an execution technique, not a new source of project authority.
+
+---
+
+## Execution topology
+
+Default to **direct execution** when one capable agent can perform the work coherently without meaningful benefit from delegation.
+
+Delegation MAY be used when work is:
+
+- sufficiently independent to separate cleanly;
+- usefully parallelizable;
+- specialist in nature;
+- valuable to investigate independently;
+- large enough that context partitioning improves reliability;
+- safer when an implementation and its review/verification are separated.
+
+Do NOT delegate merely because a harness supports delegation.
+
+Avoid delegation when:
+
+- coordination overhead is likely to exceed the benefit;
+- the work is tightly coupled and would cause frequent cross-agent conflicts;
+- the task is small enough that a single execution path is clearer;
+- safe mutation isolation cannot be established for concurrent writers;
+- delegation would introduce material cost, external side effects, or authority beyond the Authorization Envelope.
+
+If delegation is unavailable or not beneficial, execute directly. ADP conformance does not require multi-agent execution.
+
+---
+
+## Coordinating agent
+
+When an agent delegates part of an authorized objective, the delegating agent becomes the **coordinating agent** for that delegated work.
+
+The coordinating agent owns:
+
+- decomposition of the delegated scope;
+- preservation of the user's intent;
+- creation of the Execution Brief;
+- scope ownership and collision prevention;
+- mutation/isolation decisions;
+- reconciliation of returned work;
+- authoritative updates to project state;
+- human-facing progress and Transition Briefs.
+
+A delegated worker receives only the authority needed for its brief.
+
+Delegation MUST NOT silently expand:
+
+- product scope;
+- destructive authority;
+- external side-effect authority;
+- security/privacy authority;
+- deployment/publication authority;
+- spending/cost authority.
+
+Existing hard checkpoints still apply.
+
+---
+
+## Preserve user intent through delegation
+
+A delegated task MUST carry enough **user/product intent** to explain why the work exists, not only what file or function to change.
+
+Do not reduce a meaningful user request to a shallow implementation instruction when the omitted rationale could affect:
+
+- product behavior;
+- UX choices;
+- architecture;
+- security;
+- tradeoffs;
+- acceptance criteria.
+
+Example:
+
+```text
+Weak delegation:
+    Implement factions.
+
+Better delegation:
+    The product intentionally creates distrust and negotiation between players.
+    Implement the faction capability required by WORK-014 while preserving that
+    social-design goal and the acceptance criteria in docs/PRODUCT.md.
+```
+
+Canonical product requirements remain owned by their normal project documents. The Execution Brief carries only the subset needed for the delegated scope.
+
+---
+
+## Execution Brief
+
+Before substantial delegated work begins, provide the worker with a compact **Execution Brief**.
+
+The brief is a **generated projection** of existing authority and context. It is NOT another canonical requirements document.
+
+Include, as applicable:
+
+```text
+User / product intent
+Contract ID and outcome
+Owned scope
+Out of scope
+Acceptance criteria
+Dependencies and relevant canonical references
+Mutation posture
+Authorization / safety boundaries
+Required verification
+Delivery / handoff expectations
+```
+
+For a tiny delegated Atomic Unit, the brief MAY be correspondingly smaller.
+
+If an Execution Brief conflicts with the current user instruction, active Contract, or canonical project documentation, the higher-authority source wins and the brief MUST be repaired.
+
+Execution Briefs SHOULD remain ephemeral or local unless a harness requires persistence for recovery. Do not create a permanent duplicate documentation layer merely for delegation.
+
+---
+
+## Mutation posture
+
+Delegated work has one of two mutation postures:
+
+### READ_ONLY
+
+The worker may inspect, research, audit, reproduce, reason, and report findings.
+
+It MUST NOT modify project source/configuration unless the brief explicitly authorizes a narrowly named report/evidence artifact.
+
+An explicitly READ_ONLY task MUST NOT silently promote itself to repository mutation.
+
+### MUTATING
+
+The worker may modify the repository within the delegated scope and Authorization Envelope.
+
+Mutation posture may be inferred from an unambiguous Contract, but when ambiguity could cause unintended changes, state it explicitly in the Execution Brief.
+
+A READ_ONLY investigation that discovers a desirable fix reports the proposed change. The coordinating agent decides whether that work should become authorized MUTATING execution.
+
+---
+
+## Concurrent mutation isolation
+
+When two or more execution lanes may mutate a repository concurrently, they MUST NOT share the same writable checkout.
+
+Each concurrent mutating lane MUST have an isolated writable workspace and change lineage, for example:
+
+- Git worktree + dedicated branch;
+- isolated checkout + dedicated branch;
+- harness-provided isolated workspace;
+- equivalent repository-safe isolation.
+
+A branch name alone is not isolation if two agents still modify the same working directory.
+
+If safe isolation cannot be established, serialize the mutating work instead.
+
+READ_ONLY workers MAY share read access when doing so cannot interfere with mutation or verification.
+
+Verification performed inside an isolated lane MUST be understood as verification of that lane's state. Integration-level verification still occurs after reconciliation when required.
+
+Shared databases, services, test environments, or other mutable external resources require their own collision controls; filesystem isolation alone is not sufficient.
+
+---
+
+## Scope ownership and collision control
+
+Concurrent delegated lanes SHOULD have non-overlapping mutable ownership whenever practical.
+
+The coordinating agent MUST make ownership clear enough to prevent workers from competing over the same implementation.
+
+If overlap is unavoidable:
+
+1. define which lane owns each contested surface;
+2. define the expected integration order;
+3. avoid simultaneous conflicting edits;
+4. reconcile against the active Contract after integration.
+
+A worker that discovers necessary work outside its delegated scope SHOULD report it rather than opportunistically expanding ownership, unless the brief already authorizes such dependency-local fixes.
+
+---
+
+## Delegated completion is provisional
+
+A worker's statement that work is complete is **evidence**, not authoritative project state.
+
+Before marking a delegated Contract or result VERIFIED, the coordinating agent MUST reconcile it against:
+
+- the current user intent;
+- the active Contract;
+- applicable canonical project documentation;
+- the actual diff/artifacts;
+- acceptance criteria;
+- required verification evidence;
+- dependency and integration state;
+- unrelated-change safety.
+
+The coordinating agent MUST perform enough independent inspection or verification to establish that the result is genuinely acceptable.
+
+For higher-risk work, independently rerun the relevant checks or perform an independent review.
+
+For low-risk work, trustworthy worker-produced evidence MAY be reused when it is inspectable and sufficient, but confidence language alone is never evidence.
+
+Only after reconciliation may delegated work update authoritative Contract/status/continuity state as verified.
+
+---
+
+## Preserve unlanded delegated work
+
+Never reset, delete, recycle, or repurpose a delegated workspace containing unresolved unlanded work unless:
+
+1. the work has been safely preserved or deliberately integrated; or
+2. discard of that specific work is explicitly authorized.
+
+Unexpected unlanded work is a **state to reconcile**, not an obstacle to remove.
+
+If a worker fails, crashes, or must be replaced:
+
+- preserve useful changes/evidence first;
+- record enough state for recovery;
+- avoid destructive cleanup merely to obtain a clean workspace;
+- then relaunch or reassign as appropriate.
+
+This rule complements normal Git/file safety and does not prohibit ordinary deletion of tracked obsolete code inside an authorized change.
+
+---
+
+## Human-facing communication
+
+During delegated execution, the coordinating agent is normally the primary human-facing development interface.
+
+Workers SHOULD return results, evidence, blockers, and decisions to the coordinator rather than generating competing progress narratives.
+
+Use the existing **Transition Transparency Protocol** for meaningful user-facing boundaries.
+
+Delegation MUST NOT create routine approval gates.
+
+A worker completion event is normally a reason to reconcile and continue, not a reason to ask the user for permission to proceed.
+
+---
+
+## Supervision efficiency
+
+When the harness supports it, prefer **event-driven worker completion/escalation** over repeated model-driven polling.
+
+If polling is necessary:
+
+- keep it bounded;
+- avoid consuming significant model/context capacity merely to ask whether work finished;
+- stop polling when the worker reaches a terminal, blocked, or escalation state.
+
+Harness/runtime identifiers such as process IDs, terminal panes, session IDs, temporary inboxes, or watcher state SHOULD remain ephemeral.
+
+Durable project state should record only what a cold successor needs to understand and recover the work.
+
+---
+
+## Delegated execution and continuity
+
+When delegated or concurrent work is active, continuity state MUST make unresolved execution legible.
+
+Record, as applicable:
+
+- affected Contract;
+- active delegated scopes;
+- mutation posture;
+- durable branch/workspace reference when useful;
+- integrated versus unlanded state;
+- relevant verification state;
+- blocker;
+- exact next reconciliation or resume action.
+
+Do not persist transient orchestration noise that has no recovery value.
+
+---
+
 # CONTINUITY PROTOCOL
 
 The repository MUST support cold handoff to a fresh capable agent.
@@ -971,6 +1255,8 @@ It should contain:
 ```
 
 Do not turn this file into a chronological diary.
+
+When delegated or concurrent work is active, `Work in progress` MUST identify enough durable execution state to recover it, including relevant delegated scope, mutation posture, integration/unlanded state, and the exact next reconciliation or resume action. Avoid transient runtime identifiers unless they are genuinely required for recovery.
 
 Rewrite it to reflect the current resume point.
 
@@ -1102,7 +1388,12 @@ Suggested schema:
       "title": "Authentication",
       "workstream": "Platform",
       "status": "in_progress",
-      "depends_on": ["WORK-001"]
+      "depends_on": ["WORK-001"],
+      "execution": {
+        "mode": "delegated",
+        "mutation": "mutating",
+        "branch": "adp/WORK-002"
+      }
     }
   ]
 }
@@ -1127,6 +1418,7 @@ Rules:
 - IDs should be stable.
 - Dependencies should reference IDs.
 - Optional `next_milestone` and `next_contract` should identify the selected machine-readable continuation target when known.
+- Optional per-contract `execution` metadata MAY record durable recovery information such as `mode` (`direct` or `delegated`), `mutation` (`read_only` or `mutating`), and a stable branch reference. Do not store transient process/session/pane identifiers merely because they exist.
 - The ledger tracks execution state, not full requirements.
 - Contract Markdown remains the rich explanation.
 - `PRODUCT.md` remains the product authority.
@@ -2913,6 +3205,22 @@ Progress updates do not require acknowledgement.
 
 Stop only at a hard checkpoint, a genuine external blocker, completion of the
 authorized objective, or explicit instruction to stop.
+
+## Delegation and concurrency
+
+Use direct execution when it is the clearest path. Delegate only when it
+materially improves delivery.
+
+For delegated work:
+- preserve the user's/product's intent in the execution brief;
+- state or infer READ_ONLY vs MUTATING posture safely;
+- concurrent mutating lanes require isolated writable workspaces;
+- prevent overlapping mutable ownership unless integration is explicitly coordinated;
+- treat worker completion as provisional until reconciled against the Contract and evidence;
+- never destroy unresolved unlanded delegated work.
+
+Delegation does not expand the Authorization Envelope or create routine user
+approval gates.
 
 ## Cold-start / resume
 
