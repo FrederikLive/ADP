@@ -10,4 +10,8 @@ This document is explanatory; `ADP.md` remains normative.
 
 **Transition-transparent:** a human can determine what meaningful outcome just completed, what was verified, the current milestone, what phase is recommended next, why it is next, and whether execution will CONTINUE, CHECKPOINT, or COMPLETE.
 
+**Delegation-safe:** when delegation or concurrent mutation is used, user intent survives delegation, concurrent writers are isolated, mutable ownership is controlled, delegated completion is reconciled before becoming authoritative state, and unresolved unlanded work is preserved.
+
+Delegation is optional. A conformant ADP project/harness may execute entirely with one agent when that is the smallest sufficient execution topology.
+
 Conformance is behavioral, not cosmetic.
