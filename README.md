@@ -115,8 +115,10 @@ docs/
 ├── COMPATIBILITY.md           Agent/harness integration guidance
 ├── VERSIONING.md              Protocol versioning rules
 ├── GLOSSARY.md                ADP terminology
-└── RESEARCH.md                Research rationale
+├── RESEARCH.md                Research rationale
+└── WIKI.md                    Wiki source/publishing maintenance
 
+wiki/                          Version-controlled source for the GitHub Wiki
 templates/                     Convenience templates derived from ADP.md
 schema/work.schema.json        Optional WORK.json schema
 examples/                      Example prompts and integration snippets
