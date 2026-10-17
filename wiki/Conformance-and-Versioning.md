@@ -75,6 +75,12 @@ Long-running projects should record/pin the ADP version they adopted.
 
 ## Current release
 
+**2.7.0 — 2026-10-17**
+
+Additions:
+
+- Standardized external-analysis intake identifiers, filename conventions, separate reconciliation records, and archive traceability.
+
 **2.6.0 — 2026-10-17**
 
 Additions:
