@@ -13,6 +13,8 @@
 **Hard Checkpoint:** pause requiring consequential human authority/information.  
 **Soft Checkpoint:** persistence/verification point not normally requiring acknowledgement.  
 **Evidence:** executable/inspectable proof supporting completion.  
+**External Analysis Reconciliation:** structured intake and independent evaluation of a report's findings, including dispositions, source traceability, integration decisions, and verification.  
+**Finding Disposition:** explicit status assigned to a report finding: CONFIRMED, PARTIALLY CONFIRMED, REJECTED, ALREADY RESOLVED, DUPLICATE, DEFERRED, or UNRESOLVED.  
 **Reconciliation:** coordinator review/integration of delegated output against intent, Contract, canonical state, actual artifacts, and required verification before authoritative acceptance.  
 **Unlanded Work:** delegated or local changes not yet deliberately integrated/committed/otherwise preserved in the project's accepted delivery path.  
 **Next Recommended Phase:** human-scale description of the next meaningful Contract, Workstream, or Milestone outcome and why it should happen next.  
