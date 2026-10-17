@@ -38,7 +38,9 @@ Greenfield: understand product, users, constraints, runtime/deployment, risks, a
 Classify applicable concerns: UI/design, API, persistence, security/privacy, delivery, migrations, integrations, regulated/safety-sensitive behavior, performance, accessibility, observability.
 
 ## 2A. Reading and conformance policy
-During bootstrap, read all REQUIRED material, the applicability guidance for CONDITIONAL material, and every applicable normative section. If applicability is unclear, treat it as applicable. For routine work after bootstrap, start with root/nearest `AGENTS.md`, active Contract, continuity state, and relevant canonical docs; retrieve relevant ADP sections as needed.
+When bootstrapping from the full `ADP.md`, read the required core areas (usage instructions; mission and precedence; autonomy/safety; bootstrap and working lifecycles; work decomposition; delegation/concurrency; continuity/checkpoints; verification/review; definition of done; and final bootstrap/reporting requirements), plus applicability guidance and every conditional section that applies. If applicability is unclear, treat it as applicable. When bootstrapping from this compact distribution, read the compact file completely.
+
+For routine work after bootstrap, start with root/nearest `AGENTS.md`, active Contract, continuity state, and relevant canonical docs; retrieve relevant `ADP.md` sections as needed. The compact file may support constrained routine execution, but it does not replace the full specification for interpretation disputes or applicable specialized requirements.
 
 Reading classes are a retrieval policy, not a reduction in authority. MUST/SHOULD/MAY requirements never become optional because they appear near examples, rationale, or templates. Before deferring a passage as REFERENCE, ensure it contains no unique normative requirement; extract any such requirement into REQUIRED or CONDITIONAL material first. `ADP.md` remains the complete authority and wins on ambiguity or conflict.
 
