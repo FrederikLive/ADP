@@ -1,3 +1,3 @@
-ADP — Agent Development Protocol · Version 2.6.0 · MIT License · Author: Frederik Smith
+ADP — Agent Development Protocol · Version 2.7.0 · MIT License · Author: Frederik Smith
 
 This Wiki is explanatory. [ADP.md](https://github.com/FrederikLive/ADP/blob/main/ADP.md) is canonical.
