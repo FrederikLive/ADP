@@ -4,7 +4,7 @@
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
-> **ADP means Agent Development Protocol.** The name reflects the purpose of this file: it defines a portable protocol for how capable AI coding agents should initialize, understand, plan, build, test, verify, continue, hand off, and deliver software projects. ADP is not tied to one model, coding harness, language, framework, or vendor. It is intended to act as the shared operating protocol between the user, the repository, and any current or future coding agent.
+> **Protocol summary:** This file defines a portable operating protocol for how capable AI coding agents initialize, understand, plan, build, test, verify, continue, hand off, and deliver software projects. It is not tied to one model, coding harness, language, framework, or vendor; it is intended to coordinate the user, repository, and current or future coding agents.
 >
 > **Author:** Frederik Smith  
 > **Email:** w5zk8yjto@mozmail.com  
