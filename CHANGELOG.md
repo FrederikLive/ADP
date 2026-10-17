@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [2.7.0] - 2026-10-17
+### Added
+- External-analysis intake naming and storage convention for reports with descriptive, generic, generated, or obscure filenames and multiple text formats.
+- Separate normalized reconciliation records, exact original-filename/path metadata, collision-safe identifiers, and archive-copy integrity checks.
+- Default adaptable external-analysis directory layout, subject to repository conventions, authorization, privacy, and retention policy.
+
 ## [2.6.0] - 2026-10-17
 ### Added
 - Reading and conformance policy distinguishing REQUIRED, CONDITIONAL, and REFERENCE material while preserving all applicable normative requirements.
