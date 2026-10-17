@@ -18,6 +18,8 @@ if f"version:** {v}" not in mini: errors.append("ADP.min.md version mismatch")
 if "Reading and conformance policy" not in mini: errors.append("ADP.min.md reading policy missing")
 if "External analysis intake and reconciliation" not in mini: errors.append("ADP.min.md external-analysis protocol missing")
 if "Intake file identification, naming, and storage" not in adp: errors.append("ADP.md external-analysis naming policy missing")
+if "Original filename and source path (exact)" not in adp: errors.append("ADP.md reconciliation source metadata missing")
+if "Intake file identification, naming, and storage" not in adp: errors.append("ADP.md external-analysis naming policy missing")
 if "short-id" not in mini or "short-id" not in adp: errors.append("External-analysis naming convention missing")
 if "Original filename and source path (exact)" not in adp: errors.append("External-analysis reconciliation source metadata missing")
 
