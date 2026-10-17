@@ -36,7 +36,7 @@ A generic user prompt is:
 Use the Agent Development Protocol from the ADP repository available in this
 workspace/context.
 
-Read its AGENTS.md and then ADP.md completely.
+Read its AGENTS.md, then apply ADP.md's reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement.
 
 We are building:
 <describe the project, users, constraints, and desired outcome>
