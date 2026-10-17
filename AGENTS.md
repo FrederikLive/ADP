@@ -6,7 +6,7 @@ This repository defines **ADP — Agent Development Protocol**. The canonical no
 ## Mandatory startup
 If modifying ADP: read `ADP.md`, `CONTRIBUTING.md`, `GOVERNANCE.md`, and `docs/VERSIONING.md`; inspect Git state; run `python scripts/validate.py` before completion.
 
-If this repository is reference material for another project: read this file, then read `ADP.md` completely, apply ADP to the target project, and do not modify this repository unless explicitly asked.
+If this repository is reference material for another project: read this file, then apply `ADP.md`'s reading policy (REQUIRED material, CONDITIONAL applicability, and all applicable normative requirements); use `ADP.min.md` for constrained routine contexts, apply ADP to the target project, and do not modify this repository unless explicitly asked.
 
 ## Source-of-truth hierarchy
 1. `ADP.md`
