@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml/badge.svg)](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Protocol Version](https://img.shields.io/badge/ADP-2.5.0-blue.svg)](VERSION)
+[![Protocol Version](https://img.shields.io/badge/ADP-2.6.0-blue.svg)](VERSION)
 
 **ADP (Agent Development Protocol)** is a vendor-neutral protocol for structuring software projects so capable AI coding agents can bootstrap, understand, build, test, verify, continue, recover, and hand work to another agent with minimal unnecessary human intervention.
 
@@ -25,7 +25,7 @@ If `ADP.min.md` or any convenience template, example, integration guide, or adap
 If this repository has been attached, cloned, mounted, vendored, or otherwise made available to you as development guidance:
 
 1. Read [`AGENTS.md`](AGENTS.md).
-2. Read [`ADP.md`](ADP.md) completely when context permits; for context-constrained routine execution, [`ADP.min.md`](ADP.min.md) is the compact derivative.
+2. Apply ADP.md's reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement. Use [`ADP.min.md`](ADP.min.md) for context-constrained work, while consulting the full specification for applicable detail and disputes.
 3. Treat `ADP.md` as the canonical protocol.
 4. Apply ADP to the **target project** the user asked you to work on.
 5. Do not modify this ADP repository unless the user is explicitly asking you to develop ADP itself.
@@ -99,7 +99,8 @@ ADP defines eight core protocols:
 5. **Verification Protocol** — how work is proven correct.
 6. **Continuity Protocol** — how project state survives context windows and agent replacement.
 7. **Transition Transparency Protocol** — how meaningful development boundaries are shown to humans without turning ordinary continuation into approval gates.
-8. **Escalation Protocol** — when human involvement is genuinely required.
+8. **External Analysis Intake & Reconciliation Protocol** — how external reports are independently validated, dispositioned, tracked, and verified.
+9. **Escalation Protocol** — when human involvement is genuinely required.
 
 ## Repository map
 
