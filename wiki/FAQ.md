@@ -20,7 +20,7 @@ No.
 
 Direct single-agent execution remains the default when it is the smallest sufficient topology.
 
-ADP 2.5 adds rules for delegation and concurrency **when they are beneficial**. ADP 2.6 adds a reading policy and external-analysis reconciliation safeguards. ADP 2.7 standardizes how incoming reports are identified, named, reconciled, and archived. ADP 2.7 standardizes how incoming reports are identified, named, reconciled, and archived.
+ADP 2.5 adds rules for delegation and concurrency **when they are beneficial**. ADP 2.6 adds a reading policy and external-analysis reconciliation safeguards. ADP 2.7 standardizes how incoming reports are identified, named, reconciled, and archived.
 
 ## Does ADP require Git worktrees?
 
