@@ -17,6 +17,9 @@ mini=(ROOT/"ADP.min.md").read_text()
 if f"version:** {v}" not in mini: errors.append("ADP.min.md version mismatch")
 if "Reading and conformance policy" not in mini: errors.append("ADP.min.md reading policy missing")
 if "External analysis intake and reconciliation" not in mini: errors.append("ADP.min.md external-analysis protocol missing")
+if "Intake file identification, naming, and storage" not in adp: errors.append("ADP.md external-analysis naming policy missing")
+if "short-id" not in mini or "short-id" not in adp: errors.append("External-analysis naming convention missing")
+if "Original filename and source path (exact)" not in adp: errors.append("External-analysis reconciliation source metadata missing")
 
 # Keep public/versioned derivatives aligned with the canonical protocol version.
 cff=(ROOT/"CITATION.cff").read_text()
@@ -40,7 +43,7 @@ if "external analysis intake & reconciliation" not in wiki_home.lower(): errors.
 if "external audit or ai-generated analysis report" not in wiki_faq.lower(): errors.append("wiki/FAQ.md external-analysis guidance missing")
 if f"**Current version:** {v}" not in wiki_sidebar: errors.append("wiki/_Sidebar.md current version mismatch")
 if f"Version {v}" not in wiki_footer: errors.append("wiki/_Footer.md current version mismatch")
-anchors=["Authorization Envelope","Autonomous continuation","Transition transparency","Transition Brief","Delegated and concurrent execution","Execution Brief","READ_ONLY","MUTATING","Concurrent mutation isolation","reconciliation","unlanded","Next recommended phase","Exact next action","Soft checkpoint","Hard checkpoint","VERIFIED","FAILED","NOT RUN","NOT AVAILABLE","Continuity protocol","Cold-start successor","WORK.json","Git and file safety","Security and external side effects","Definition of done","Reading and conformance policy","External analysis intake and reconciliation","PARTIALLY CONFIRMED","ALREADY RESOLVED","UNRESOLVED"]
+anchors=["Intake file identification, naming, and storage","short-id","original filename","Authorization Envelope","Autonomous continuation","Transition transparency","Transition Brief","Delegated and concurrent execution","Execution Brief","READ_ONLY","MUTATING","Concurrent mutation isolation","reconciliation","unlanded","Next recommended phase","Exact next action","Soft checkpoint","Hard checkpoint","VERIFIED","FAILED","NOT RUN","NOT AVAILABLE","Continuity protocol","Cold-start successor","WORK.json","Git and file safety","Security and external side effects","Definition of done","Reading and conformance policy","External analysis intake and reconciliation","PARTIALLY CONFIRMED","ALREADY RESOLVED","UNRESOLVED"]
 for a in anchors:
     if a.lower() not in mini.lower(): errors.append("ADP.min.md missing semantic anchor: "+a)
 ratio=len(mini.encode())/max(1,len(adp.encode()))
