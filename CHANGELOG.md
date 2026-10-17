@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [2.6.0] - 2026-10-17
+### Added
+- Reading and conformance policy distinguishing REQUIRED, CONDITIONAL, and REFERENCE material while preserving all applicable normative requirements.
+- External Analysis Intake & Reconciliation Protocol for independent validation, finding dispositions, traceability, canonical integration, authorization boundaries, and verification.
+- Reusable external-analysis reconciliation record template and explicit completion criteria.
+
+### Changed
+- Consolidated repeated ADP identity/scope prose into one authoritative section.
+- Updated bootstrap prompts and directives to follow the reading policy.
+- Synchronized compact distribution and repository metadata for ADP 2.6.0.
+
 ## [2.5.0] - 2026-09-27
 ### Added
 - Delegated & Concurrent Execution protocol for safe, proportional multi-agent execution without making delegation mandatory.
