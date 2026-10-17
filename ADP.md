@@ -1,6 +1,6 @@
 # ADP.md
 
-> **Agent Development Protocol — Version 2.6.0 (2026-10-17)**
+> **Agent Development Protocol — Version 2.7.0 (2026-10-17)**
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
