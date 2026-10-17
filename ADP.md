@@ -1,6 +1,6 @@
 # ADP.md
 
-> **Agent Development Protocol — Version 2.5.0 (2026-09-27)**
+> **Agent Development Protocol — Version 2.6.0 (2026-10-17)**
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
@@ -12,7 +12,9 @@
 >
 > **Purpose:** Copy this single file into a new or existing coding project, open that folder in a capable AI coding harness, describe the project you want to build, and use its reading policy to bootstrap the repository without skipping applicable normative requirements.
 
-> Version 2.5.0 adds **Delegated & Concurrent Execution**: ADP now defines when delegation is useful, how user intent survives delegation, how concurrent mutating agents are isolated, how delegated results are reconciled before becoming authoritative project state, and how unlanded delegated work is preserved. Delegation remains optional and proportional: direct single-agent execution is still the default when it is simpler or safer. Version 2.5.0 builds on Version 2.4 Transition Transparency and preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
+> Version 2.6.0 adds a **Reading and Conformance Policy** and an **External Analysis Intake & Reconciliation Protocol**. These clarify which material agents must load for bootstrap versus routine work without weakening applicable normative requirements, and define how external reports are independently validated, dispositioned, tracked, preserved, and verified.
+>
+> Version 2.5.0 added **Delegated & Concurrent Execution**: ADP now defines when delegation is useful, how user intent survives delegation, how concurrent mutating agents are isolated, how delegated results are reconciled before becoming authoritative project state, and how unlanded delegated work is preserved. Delegation remains optional and proportional: direct single-agent execution is still the default when it is simpler or safer. Version 2.5.0 builds on Version 2.4 Transition Transparency and preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
 
 ---
 
