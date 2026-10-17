@@ -20,7 +20,7 @@
 
 # ADP identity and scope
 
-**ADP (Agent Development Protocol)** is a portable, vendor-neutral, repository-native protocol for reliable AI-assisted and AI-autonomous software development. It defines repeatable conventions for capable coding agents to initialize, understand, plan, implement, test, verify, continue, recover, hand off, and deliver software across models, harnesses, languages, frameworks, and vendors.
+**ADP means Agent Development Protocol.** It is a portable, vendor-neutral, repository-native protocol for reliable AI-assisted and AI-autonomous software development. It defines repeatable conventions for capable coding agents to initialize, understand, plan, implement, test, verify, continue, recover, hand off, and deliver software across models, harnesses, languages, frameworks, and vendors.
 
 ADP is not a framework, programming language, package manager, or cloud platform. It is an operating protocol that turns project intent and a workspace into a maintainable engineering system with clear sources of truth, executable quality gates, controlled autonomy, and cross-session continuity.
 
