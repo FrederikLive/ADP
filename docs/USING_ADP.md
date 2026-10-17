@@ -3,7 +3,7 @@
 The canonical protocol is `../ADP.md`.
 
 ## Preferred: attach or mount the repository
-Give the agent `https://github.com/FrederikLive/ADP`, then instruct it to read `AGENTS.md` and `ADP.md` completely before bootstrapping the target project.
+Give the agent `https://github.com/FrederikLive/ADP`, then instruct it to read `AGENTS.md`, then apply ADP.md's reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement before bootstrapping the target project.
 
 ## Git submodule
 ```bash
@@ -16,7 +16,7 @@ Copy `ADP.md` into the target root and instruct the agent to read it completely.
 
 ## Recommended prompt
 ```text
-Read the ADP repository's AGENTS.md and then ADP.md completely.
+Read the ADP repository's AGENTS.md. Apply ADP.md's reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement.
 Apply the Agent Development Protocol to this target project.
 Work with HIGH autonomy inside the authorization envelope.
 Do not stop for routine continue acknowledgements.
