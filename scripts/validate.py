@@ -3,7 +3,7 @@ import json, re, sys
 from pathlib import Path
 from urllib.parse import unquote
 ROOT=Path(__file__).resolve().parents[1]
-REQ=["ADP.md","ADP.min.md","AGENTS.md","README.md","LICENSE","VERSION","CHANGELOG.md","CONTRIBUTING.md","GOVERNANCE.md","SECURITY.md","docs/USING_ADP.md","docs/MINIFIED.md","docs/CONFORMANCE.md","docs/COMPATIBILITY.md","docs/VERSIONING.md","docs/GLOSSARY.md","schema/work.schema.json"]
+REQ=["ADP.md","ADP.min.md","AGENTS.md","README.md","LICENSE","VERSION","CHANGELOG.md","CITATION.cff","CONTRIBUTING.md","GOVERNANCE.md","SECURITY.md","CLAUDE.md","GEMINI.md",".github/copilot-instructions.md","examples/BOOTSTRAP_PROMPT.md","docs/USING_ADP.md","docs/MINIFIED.md","docs/CONFORMANCE.md","docs/COMPATIBILITY.md","docs/VERSIONING.md","docs/GLOSSARY.md","wiki/Home.md","wiki/Getting-Started.md","wiki/Conformance-and-Versioning.md","wiki/FAQ.md","schema/work.schema.json"]
 errors=[]
 for x in REQ:
     if not (ROOT/x).exists(): errors.append("Missing required file: "+x)
