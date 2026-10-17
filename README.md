@@ -90,7 +90,7 @@ See [`docs/USING_ADP.md`](docs/USING_ADP.md) for detailed integration patterns.
 
 ## What ADP establishes
 
-ADP defines eight core protocols:
+ADP defines nine core protocols:
 
 1. **Bootstrap Protocol** — how a new or existing repository is initialized.
 2. **Autonomy Protocol** — what an agent may do without repeated approval.
