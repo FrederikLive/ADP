@@ -77,7 +77,7 @@ Long-running projects should record/pin the ADP version they adopted.
 
 **2.6.0 — 2026-10-17**
 
-Major additions:
+Additions:
 
 - Reading and conformance policy for efficient loading without weakening normative requirements.
 - External Analysis Intake & Reconciliation Protocol.
