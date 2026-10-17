@@ -19,7 +19,8 @@ ADP addresses common failure modes in AI-assisted development:
 - documentation drift;
 - unsafe destructive actions;
 - concurrent agents overwriting one another;
-- delegated workers returning technically correct work that misses the user's actual goal.
+- delegated workers returning technically correct work that misses the user's actual goal;
+- external reports being implemented without independent validation or reconciliation;
 
 ADP creates a small repository-native control system around the code so agents can work autonomously without making the project dependent on a particular vendor, model, IDE, or orchestration framework.
 
@@ -71,7 +72,7 @@ Contract
 
 ## Current protocol
 
-**ADP 2.5.0** adds Delegated & Concurrent Execution while keeping direct single-agent execution as the default when it is the smallest sufficient execution topology.
+**ADP 2.6.0** adds a reading and conformance policy plus External Analysis Intake & Reconciliation, building on 2.5.0's delegated/concurrent execution safeguards.
 
 **Author:** Frederik Smith  
 **License:** MIT
