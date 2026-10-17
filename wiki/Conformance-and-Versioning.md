@@ -51,6 +51,14 @@ When delegation/concurrent mutation is used:
 
 **Delegation itself is optional.** A single-agent project can be fully ADP-conformant.
 
+### Reading-efficient
+
+Agents distinguish REQUIRED, CONDITIONAL, and REFERENCE material, establish applicability before skipping specialized sections, and never make normative requirements optional merely by deferring explanatory text.
+
+### Analysis-reconciled
+
+External reports are untrusted evidence, not implementation authority. Each finding is independently validated and dispositioned with rationale; accepted work is tracked and verified, and the original source and reconciliation remain traceable. Deferred and unresolved findings remain visible.
+
 ## Semantic versioning
 
 ADP uses:
@@ -67,11 +75,14 @@ Long-running projects should record/pin the ADP version they adopted.
 
 ## Current release
 
-**2.5.0 — 2026-09-27**
+**2.6.0 — 2026-10-17**
 
-Major addition:
+Additions:
 
-- Delegated & Concurrent Execution.
+- Reading and conformance policy for efficient loading without weakening normative requirements.
+- External Analysis Intake & Reconciliation Protocol.
+
+**2.5.0 — 2026-09-27** introduced Delegated & Concurrent Execution.
 
 ## Canonical and derived artifacts
 

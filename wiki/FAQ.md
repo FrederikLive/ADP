@@ -20,7 +20,7 @@ No.
 
 Direct single-agent execution remains the default when it is the smallest sufficient topology.
 
-ADP 2.5 adds rules for delegation and concurrency **when they are beneficial**.
+ADP 2.5 adds rules for delegation and concurrency **when they are beneficial**. ADP 2.6 adds a reading policy and external-analysis reconciliation safeguards.
 
 ## Does ADP require Git worktrees?
 
@@ -79,6 +79,10 @@ If overlap is unavoidable, define ownership and integration order. Do not allow 
 No.
 
 Use it when a substantial multi-Contract project benefits from machine-readable execution state.
+
+## What if I have an external audit or AI-generated analysis report?
+
+Treat it as untrusted evidence, not an instruction to implement blindly. Preserve the original, independently validate every finding, assign an explicit disposition with rationale, track accepted work, update canonical docs, and verify any fixes. Deferred or unresolved findings should remain visible.
 
 ## Is the Wiki normative?
 

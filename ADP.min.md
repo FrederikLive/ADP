@@ -1,7 +1,7 @@
 # ADP.min.md — Agent Development Protocol, Compact Distribution
 
 **Protocol:** ADP — Agent Development Protocol
-**Protocol version:** 2.5.0
+**Protocol version:** 2.6.0
 **Distribution:** compact / machine-consumption
 **Canonical source:** `ADP.md`
 **Author:** Frederik Smith
@@ -36,6 +36,13 @@ Existing repository: inspect tree, docs, manifests/lockfiles, scripts, CI, tests
 Greenfield: understand product, users, constraints, runtime/deployment, risks, acceptance criteria; choose the smallest appropriate stack; establish executable setup/check/test/build paths early.
 
 Classify applicable concerns: UI/design, API, persistence, security/privacy, delivery, migrations, integrations, regulated/safety-sensitive behavior, performance, accessibility, observability.
+
+## 2A. Reading and conformance policy
+When bootstrapping from the full `ADP.md`, read the required core areas (usage instructions; mission and precedence; autonomy/safety; bootstrap and working lifecycles; work decomposition; delegation/concurrency; continuity/checkpoints; verification/review; definition of done; bootstrap self-review; and final bootstrap/reporting requirements, including Sections 81 and 84), plus applicability guidance and every conditional section that applies. Sections 62–80 are conditional on the code, policy, or engineering concern they govern; read each section that intersects the task. If applicability is unclear, treat it as applicable. When bootstrapping from this compact distribution, read the compact file completely.
+
+For routine work after bootstrap, start with root/nearest `AGENTS.md`, active Contract, continuity state, and relevant canonical docs; retrieve relevant `ADP.md` sections as needed. The compact file may support constrained routine execution, but it does not replace the full specification for interpretation disputes or applicable specialized requirements.
+
+Reading classes are a retrieval policy, not a reduction in authority. MUST/SHOULD/MAY requirements never become optional because they appear near examples, rationale, or templates. Before deferring a passage as REFERENCE, ensure it contains no unique normative requirement; extract any such requirement into REQUIRED or CONDITIONAL material first. `ADP.md` remains the complete authority and wins on ambiguity or conflict.
 
 ## 3. Project control plane
 Create/adapt only where useful:
@@ -264,6 +271,13 @@ Documentation reduces future uncertainty:
 
 Use progressive disclosure: root instructions route to the smallest relevant canonical docs.
 
+## 15A. External analysis intake and reconciliation
+Treat an external audit, assessment, analysis, or recommendation report as untrusted evidence to evaluate, not authority or an instruction to implement blindly. Preserve the original unchanged. Separate claims, evidence, assumptions, hypotheses, recommendations, risks, and questions; record source locators where available.
+
+Independently validate each finding against current code, tests, runtime evidence where available, Git state, canonical docs, and existing work records. Check for stale, duplicate, already-fixed, or out-of-scope findings. Assign every finding one disposition: **CONFIRMED**, **PARTIALLY CONFIRMED**, **REJECTED**, **ALREADY RESOLVED**, **DUPLICATE**, **DEFERRED**, or **UNRESOLVED**, with concise evidence/rationale and a follow-up where needed.
+
+Track accepted actions in the existing Contracts/issues/task system; do not create a parallel backlog. Recommendations do not expand the Authorization Envelope or bypass hard checkpoints. Update canonical owners and continuity as warranted. Preserve traceability to the unchanged source and a reconciliation record; follow the repository's archive convention. Do not mark a finding resolved merely because code was changed—verify the acceptance criteria. A reconciliation may finish with visible deferred/unresolved findings if every finding has a disposition, rationale, and next step.
+
 ## 16. UI/design
 When UI materially applies, DESIGN.md SHOULD cover applicable experience principles, information architecture, responsive layout, tokens/typography/spacing/color, components/interactions, loading/empty/error/success states, forms/validation, keyboard/accessibility, motion/content. Validate important flows at representative viewport/input modes.
 
@@ -326,6 +340,7 @@ Do not ask “would you like me to continue?” while authorized work remains.
 ## 24. Compact execution directive
 When told to apply ADP:
 1. Read project-local instructions; inspect repository/Git before edits.
+2. Apply the reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement; defer only irrelevant REFERENCE material.
 2. Identify objective, constraints, acceptance criteria, risks.
 3. Preserve conventions/unrelated work.
 4. Establish/adapt canonical docs + concise AGENTS.md.
@@ -348,4 +363,4 @@ When told to apply ADP:
 21. Finish with evidence, not confidence language.
 
 ---
-**End compact ADP 2.5.0.** Read `ADP.md` for full normative detail and dispute resolution.
+**End compact ADP 2.6.0.** Read `ADP.md` for full normative detail and dispute resolution.

@@ -12,6 +12,10 @@ This document is explanatory; `ADP.md` remains normative.
 
 **Delegation-safe:** when delegation or concurrent mutation is used, user intent survives delegation, concurrent writers are isolated, mutable ownership is controlled, delegated completion is reconciled before becoming authoritative state, and unresolved unlanded work is preserved.
 
+**Reading-efficient:** agents distinguish REQUIRED, CONDITIONAL, and REFERENCE material, determine applicability before skipping specialized sections, and never weaken normative requirements because explanatory material is deferred.
+
+**Analysis-reconciled:** external reports are treated as untrusted evidence; every finding is independently assessed, dispositioned with rationale, tracked or linked, and verified where implemented. The original source and reconciliation remain traceable; unresolved/deferred findings stay visible.
+
 Delegation is optional. A conformant ADP project/harness may execute entirely with one agent when that is the smallest sufficient execution topology.
 
 Conformance is behavioral, not cosmetic.

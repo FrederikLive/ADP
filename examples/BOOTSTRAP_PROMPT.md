@@ -2,7 +2,7 @@
 
 ```text
 Use the Agent Development Protocol from the ADP repository available to you.
-Read its AGENTS.md and then ADP.md completely.
+Read its AGENTS.md, then apply ADP.md's reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement.
 
 Target project:
 <describe project, users, workflows, constraints, deployment, outcome>
