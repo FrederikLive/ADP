@@ -12,7 +12,7 @@ git submodule add https://github.com/FrederikLive/ADP.git .adp/protocol
 Then point the target agent to `.adp/protocol/AGENTS.md` and `.adp/protocol/ADP.md`. Pin a tag/commit for reproducibility.
 
 ## Single-file mode
-Copy `ADP.md` into the target root and instruct the agent to read it completely.
+Copy `ADP.md` into the target root and instruct the agent to apply its reading policy: read REQUIRED material, determine CONDITIONAL applicability, and follow every applicable normative requirement.
 
 ## Recommended prompt
 ```text
