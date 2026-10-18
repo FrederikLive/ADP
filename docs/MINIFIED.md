@@ -1,6 +1,6 @@
 # Minified ADP Distribution
 
-`ADP.min.md` is a **semantically compressed distribution** of ADP 2.7.0 for coding-agent contexts where token/context cost matters.
+`ADP.min.md` is a **semantically compressed distribution** of ADP 2.7.1 for coding-agent contexts where token/context cost matters.
 
 ## Why semantic compression
 

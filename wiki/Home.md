@@ -72,7 +72,7 @@ Contract
 
 ## Current protocol
 
-**ADP 2.7.0** adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability through the External Analysis Intake & Reconciliation Protocol. **ADP 2.6.0** introduced the reading and conformance policy and the external-analysis reconciliation protocol.
+**ADP 2.7.1** adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability through the External Analysis Intake & Reconciliation Protocol. **ADP 2.6.0** introduced the reading and conformance policy and the external-analysis reconciliation protocol.
 
 **Author:** Frederik Smith  
 **License:** MIT

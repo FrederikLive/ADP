@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [2.7.1] - 2026-10-18
+### Fixed
+- Unified Git authorization across greenfield bootstrap and checkpoint commits, separating local from remote permissions.
+- Prohibited self-authored authority and introduced stable authorization decisions.
+- Added Git continuity guidance and eight static policy-conformance scenarios.
+
+
 ## [2.7.0] - 2026-10-17
 ### Added
 - External-analysis intake naming and storage convention for reports with descriptive, generic, generated, or obscure filenames and multiple text formats.

@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml/badge.svg)](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Protocol Version](https://img.shields.io/badge/ADP-2.7.0-blue.svg)](VERSION)
+[![Protocol Version](https://img.shields.io/badge/ADP-2.7.1-blue.svg)](VERSION)
 
 **ADP (Agent Development Protocol)** is a vendor-neutral protocol for structuring software projects so capable AI coding agents can bootstrap, understand, build, test, verify, continue, recover, and hand work to another agent with minimal unnecessary human intervention.
 

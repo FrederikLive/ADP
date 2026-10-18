@@ -61,6 +61,11 @@ for p in ROOT.rglob("*.md"):
         if not t or t.startswith(("http://","https://","mailto:","#")): continue
         t=unquote(t.split("#",1)[0].split("?",1)[0])
         if t and not (p.parent/t).resolve().exists(): errors.append(f"Broken local link: {p.relative_to(ROOT)} -> {t}")
+if not (ROOT/"scripts/validate_git_policy.py").exists(): errors.append("Missing Git policy test script")
+else:
+    import subprocess
+    p=subprocess.run([sys.executable,str(ROOT/"scripts/validate_git_policy.py")],capture_output=True,text=True)
+    if p.returncode: errors.append("Git policy test failure: "+(p.stderr or p.stdout))
 print("ADP repository validation")
 print(f"Compact distribution: {len(mini.encode()):,} bytes / {len(adp.encode()):,} bytes = {ratio:.1%}")
 for e in errors: print("ERROR:",e)

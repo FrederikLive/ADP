@@ -16,4 +16,4 @@
 ---
 
 **Canonical protocol:** [ADP.md](https://github.com/FrederikLive/ADP/blob/main/ADP.md)  
-**Current version:** 2.7.0
+**Current version:** 2.7.1

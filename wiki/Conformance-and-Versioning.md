@@ -75,7 +75,7 @@ Long-running projects should record/pin the ADP version they adopted.
 
 ## Current release
 
-**2.7.0 — 2026-10-17**
+**2.7.1 — 2026-10-17**
 
 Additions:
 
