@@ -1,0 +1,18 @@
+> Convenience template derived from ADP. If this template conflicts with `ADP.md`, `ADP.md` wins.
+
+# Architecture
+
+## System overview
+## Context
+## Components
+## Boundaries and responsibilities
+## Data flow
+## Persistence
+## External integrations
+## Runtime / deployment topology
+## Failure handling
+## Observability
+## Security-relevant architecture
+## Architectural invariants
+## Known technical debt
+## Architecture decisions
