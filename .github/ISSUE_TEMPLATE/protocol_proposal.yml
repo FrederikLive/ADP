@@ -1,0 +1,28 @@
+name: Protocol proposal
+description: Propose a normative or structural improvement to ADP.
+title: "[Proposal]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed protocol change
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility impact
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety / autonomy / continuity impact
+    validations:
+      required: true

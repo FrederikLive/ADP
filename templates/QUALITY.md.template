@@ -1,0 +1,16 @@
+> Convenience template derived from ADP. If this template conflicts with `ADP.md`, `ADP.md` wins.
+
+# Quality Strategy
+
+## Quality goals
+## Static checks
+## Unit tests
+## Integration tests
+## Contract/schema tests
+## End-to-end tests
+## Accessibility
+## Security
+## Performance
+## Standard quality commands
+## Required pre-merge gate
+## Known gaps
