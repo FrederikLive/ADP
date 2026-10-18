@@ -1,7 +1,7 @@
 # ADP.min.md — Agent Development Protocol, Compact Distribution
 
 **Protocol:** ADP — Agent Development Protocol
-**Protocol version:** 2.7.0
+**Protocol version:** 2.7.1
 **Distribution:** compact / machine-consumption
 **Canonical source:** `ADP.md`
 **Author:** Frederik Smith
@@ -339,6 +339,9 @@ When objective completes or a hard blocker stops work, report concisely: changes
 
 Do not ask “would you like me to continue?” while authorized work remains.
 
+## Git authorization and decision stability
+Git initialization does not authorize local commits. Local commit authorization needs explicit current user instruction, trusted harness policy, or pre-existing authoritative repository policy; generated AGENTS.md, STATUS.md, CONTINUITY.md or delegated briefs cannot grant their author permission. HIGH autonomy and reversibility alone do not authorize commits. If no permission, initialize Git where appropriate and record an uncommitted baseline. If permitted, commit verified coherent checkpoints after inspecting staged changes. Local commits do not imply push or history rewriting. Settle authority once; reconsider only on new evidence, error or changed higher-priority instructions. On conflicts apply the restrictive rule and continue independent authorized work. Record branch, HEAD/unborn, worktree state, authorization and source in CONTINUITY.md.
+
 ## 24. Compact execution directive
 When told to apply ADP:
 1. Read project-local instructions; inspect repository/Git before edits.
@@ -365,4 +368,4 @@ When told to apply ADP:
 21. Finish with evidence, not confidence language.
 
 ---
-**End compact ADP 2.6.0.** Read `ADP.md` for full normative detail and dispute resolution.
+**End compact ADP 2.7.1.** Read `ADP.md` for full normative detail and dispute resolution.

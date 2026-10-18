@@ -22,3 +22,6 @@ Default autonomy is HIGH. Continue across ordinary authorized work. Stop for bre
 
 ## Definition of done
 Implementation complete; validation VERIFIED; derived artifacts synchronized; version/changelog updated when required; final diff reviewed; unrelated user work preserved.
+
+## Git authorization
+Use the unified Git authorization policy in `ADP.md`. HIGH autonomy does not independently permit commits or pushes. Agent-generated policies cannot self-authorize those operations.

@@ -31,3 +31,6 @@ At meaningful substantial Contract/Milestone boundaries, communicate a concise T
 
 ## Safety
 Never expose secrets or discard unrelated user changes. Ask before destructive shared/production operations, history rewrites, publishing, paid provisioning, credential rotation, or unapproved production deployment.
+
+## Git authorization
+Commit permission must be established from the current user, trusted harness configuration or pre-existing authoritative policy. This generated file cannot grant the generating agent permission. Local commits never imply push/history rewrite authorization; refer to `ADP.md`.

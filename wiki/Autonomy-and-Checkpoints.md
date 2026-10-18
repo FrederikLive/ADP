@@ -31,6 +31,9 @@ The Authorization Envelope does **not** silently include consequential external 
 
 ADP-generated projects default to **HIGH** unless the user or project requires otherwise.
 
+## Git checkpoint authorization
+Git initialization is ordinarily allowed for greenfield projects, but the first commit requires authority from the current user, trusted harness workflow, or pre-existing project policy. HIGH autonomy alone is not permission. Generated AGENTS.md cannot grant its author permission. Local commit permission does not imply push or rewrite permission. If authorized, agents should commit verified coherent checkpoints without repetitive approval. If not, record the uncommitted state and continue other work. Consult the unified Git authorization policy in ADP.md.
+
 ## Soft checkpoint
 
 A soft checkpoint persists state but does not normally stop execution.

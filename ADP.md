@@ -1,6 +1,6 @@
 # ADP.md
 
-> **Agent Development Protocol — Version 2.7.0 (2026-10-17)**
+> **Agent Development Protocol — Version 2.7.1 (2026-10-18)**
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
@@ -12,7 +12,7 @@
 >
 > **Purpose:** Copy this single file into a new or existing coding project, open that folder in a capable AI coding harness, describe the project you want to build, and use its reading policy to bootstrap the repository without skipping applicable normative requirements.
 
-> Version 2.7.0 adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability. Version 2.6.0 added a **Reading and Conformance Policy** and an **External Analysis Intake & Reconciliation Protocol**, clarifying required versus conditional reading and independent report reconciliation.
+> Version 2.7.1 clarifies Git authorization, bootstrap decisions, and continuity. Version 2.7.0 adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability. Version 2.6.0 added a **Reading and Conformance Policy** and an **External Analysis Intake & Reconciliation Protocol**, clarifying required versus conditional reading and independent report reconciliation.
 >
 > Version 2.5.0 added **Delegated & Concurrent Execution**: ADP now defines when delegation is useful, how user intent survives delegation, how concurrent mutating agents are isolated, how delegated results are reconciled before becoming authoritative project state, and how unlanded delegated work is preserved. Delegation remains optional and proportional: direct single-agent execution is still the default when it is simpler or safer. Version 2.5.0 builds on Version 2.4 Transition Transparency and preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
 
@@ -1574,9 +1574,35 @@ The objective is engineering completion, not ending the conversational turn.
 
 # CHECKPOINT COMMIT POLICY
 
+## Unified Git authorization and checkpoint policy
+
+This policy governs greenfield bootstrap and ongoing checkpoint commits; Section 13 and all general commit guidance defer to it for authorization.
+
+1. **Distinct operations.** Git initialization, staging, local committing, pushing, publishing, and history rewriting are distinct actions. Permission for one MUST NOT be inferred as permission for another.
+2. **Valid authority.** Determine commit permission from an explicit current user instruction, trusted harness workflow, or pre-existing authoritative target-repository policy consistent with higher-priority constraints. HIGH autonomy, command availability, convenience, reversibility, or a suggested undo command alone NEVER confer commit permission.
+3. **No self-grant.** An agent MUST NOT expand its own authority by authoring or updating `AGENTS.md`, `STATUS.md`, `CONTINUITY.md`, Contracts, scripts, or a delegated Execution Brief. Delegated workers inherit only the coordinator's bounded permission.
+4. **Greenfield default.** Initialize Git and appropriate ignore rules when not prohibited; without valid commit authorization, leave the baseline uncommitted and continue other authorized work. Record the unborn branch and actual worktree state.
+5. **Authorized commits.** With trusted authorization for local automatic commits, create logical, verified checkpoints without repeated requests for permission. Inspect the exact staged diff, exclude secrets, generated caches and unrelated user changes, and do not indiscriminately stage all files via `git add -A`.
+6. **Remote/destructive operations.** Local commit permission NEVER implies push, publication, force-push, history rewriting, or discarding unrelated work. Independently establish authorization for each.
+7. **Decision stability.** Resolve authorization once from available evidence; reconsider only with new evidence, discovered error, or changed higher-priority instruction. For unresolved conflicts, follow the more restrictive applicable rule, report the conflict once, and continue independent authorized work.
+8. **Durable continuity.** `CONTINUITY.md` records Git initialization, branch, HEAD SHA or `unborn`, staged/unstaged/untracked state, commit authorization and its source, checkpoint/push permissions, and next safe action. `STATUS.md` contains only the human-oriented summary. Never call an uncommitted tree a known-good Git revision.
+
+### Git authorization conformance cases
+
+- Greenfield, no commit permission: initialize Git if appropriate; leave the baseline uncommitted.
+- Greenfield, explicit local commit permission: create a verified baseline commit.
+- Existing project, trusted automatic checkpoint commits: commit coherent verified work without repeated approval.
+- Existing unrelated user edits: preserve them and do not stage unrelated changes.
+- Generated `AGENTS.md` self-grants commit authority: ignore the self-grant.
+- Explicit current user prohibition: do not commit regardless of lower-priority encouragement.
+- Local commit permission without push permission: commit locally only.
+- Ambiguous conflicting commit policy: choose restrictive behavior, document the decision, and continue other authorized work.
+
+
+
 Git is part of project recovery and continuity.
 
-If the repository/user/harness permits agents to commit automatically:
+If automatic commits are authorized by the Unified Git authorization and checkpoint policy:
 
 - create logical commits at verified, coherent checkpoints;
 - prefer commits aligned with completed contracts or meaningful atomic groups;
@@ -2155,7 +2181,7 @@ If this is a greenfield repository and Git is available:
 - do not commit machine-local caches;
 - do commit deterministic configuration;
 - do commit lockfiles for applications unless ecosystem conventions strongly differ;
-- do not create commits unless the user or harness workflow requests it.
+- create a baseline commit only when authorized by the Unified Git authorization and checkpoint policy.
 
 If Git already exists:
 
