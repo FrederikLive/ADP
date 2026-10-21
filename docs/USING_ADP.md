@@ -25,4 +25,4 @@ Persist continuity state so a fresh agent can resume.
 
 ## Optional human visualization
 
-ADP does not require a dashboard or additional agent bookkeeping. A separate optional companion, [ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory), is developing a local-first project scanner and future dashboard. For its current prototype usage, limitations, and planned one-command launcher, see the [human-facing Observatory guide](OBSERVATORY.md). This is non-normative and need not be read during routine agent work.
+ADP does not require a dashboard or additional agent bookkeeping. A separate optional companion, [ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory), provides a development-stage scanner and offline local HTML dashboard, with a verified-installation experience still planned. For its current prototype usage, limitations, and planned one-command launcher, see the [human-facing Observatory guide](OBSERVATORY.md). This is non-normative and need not be read during routine agent work.
