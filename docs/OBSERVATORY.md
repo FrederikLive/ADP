@@ -15,6 +15,20 @@ ADP exists to help agents work efficiently with minimal unnecessary token usage 
 - Observatory is read-only by default: analysis does not alter canonical project state.
 - Observatory findings and dashboards are derived views, not authoritative substitutes for project records or verification evidence.
 
+## Ask an agent to show Observatory (optional)
+
+In an ADP project, users can ask their coding agent:
+
+> Show Observatory for this project.
+
+Equivalent requests such as "Open the ADP Observatory dashboard" or "Visualize this ADP project" should activate the optional [ADP-Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md) **only on demand**. The skill belongs to the Observatory repository; ADP carries only a compact discovery hint. It does not introduce a mandatory protocol, extra work-index fields, routine agent context, or generated project records.
+
+With trusted local terminal access and a previously approved Observatory installation, the agent can use the bundled [local launch helper](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/scripts/launch.py) to generate a report outside the project and request opening in the local browser. The helper never downloads executables or packages. If Observatory is absent, the agent follows the skill's **conditional installation guidance** rather than silently executing downloaded code. Preview installation still requires a reviewed local checkout, an exact source commit and CI run, an independently installed GitHub CLI, and appropriate user authorization.
+
+A remote-only coding agent **cannot guarantee opening a window on the user's actual computer**. If the available tools lack local desktop access, it should return the report path or an appropriate generated artifact, or explain how to open Observatory locally. Browser opener success means an open was requested, not proof the user saw it.
+
+**For existing ADP projects:** previously generated `AGENTS.md` files do not update automatically. Install the skill in the agent's supported user-level skills directory or add the same small discovery hint to that project's router. Projects using a copy of an older `ADP.md` can continue working normally without this optional companion.
+
 ## How it works today (prototype)
 
 As of October 2026, Observatory has a tested **Rust command-line scanner and local offline HTML viewer**. It can inspect supported work-index structures and references, report limited protocol compatibility, and produce human-readable or JSON output. **It now provides a self-contained offline HTML dashboard in the development executable, but not an official installer, trusted automatic download launcher, historical dashboard, or full ADP conformance assessment.**
