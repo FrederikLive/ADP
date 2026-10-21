@@ -44,6 +44,8 @@ For routine work after bootstrap, start with root/nearest `AGENTS.md`, active Co
 
 Reading classes are a retrieval policy, not a reduction in authority. MUST/SHOULD/MAY requirements never become optional because they appear near examples, rationale, or templates. Before deferring a passage as REFERENCE, ensure it contains no unique normative requirement; extract any such requirement into REQUIRED or CONDITIONAL material first. `ADP.md` remains the complete authority and wins on ambiguity or conflict.
 
+**Optional user-triggered visualization (non-normative):** If the user explicitly asks to "show Observatory" or visualize the project, consult the [ADP-Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md) only then, with local-execution and installer trust boundaries. No routine reads, extra ADP records, or mandatory installation.
+
 ## 3. Project control plane
 Create/adapt only where useful:
 ```text
