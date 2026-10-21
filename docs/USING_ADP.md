@@ -23,6 +23,14 @@ Do not stop for routine continue acknowledgements.
 Persist continuity state so a fresh agent can resume.
 ```
 
+## Updating an existing ADP project
+
+A user can ask an ADP-aware coding agent **"Check ADP for updates"**, **"Update ADP"** or **"Migrate to ADP version X"**. These have different effects: checking is read-only; updating/migrating requires comparing trusted upstream releases to the project's actual adopted source, preserving project-specific instructions, and verifying authorized changes. Read the [ADP Project Update Guide](UPDATING_ADP.md) only when requested. This works with copied protocol files, pinned submodules, attached repositories and remote references; no new manifest or periodic network check is required.
+
+## Human-to-agent requests
+
+See the [optional ADP command catalogue](COMMANDS.md) for natural-language requests covering status, work, verification, handoff, updating ADP and Observatory. These are **not** new shell commands, literal reserved keywords or a required part of an ADP project. The existing project-specific `setup`, `check`, `test` and `build` command surface remains separate.
+
 ## Optional human visualization
 
 ADP does not require a dashboard or additional agent bookkeeping. A separate optional companion, [ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory), provides a development-stage scanner and offline local HTML dashboard, with a verified-installation experience still planned. For its current prototype usage, limitations, and planned one-command launcher, see the [human-facing Observatory guide](OBSERVATORY.md). This is non-normative and need not be read during routine agent work.
