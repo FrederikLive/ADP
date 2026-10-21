@@ -20,7 +20,7 @@ Interpret the user request carefully:
 
 A generic "update the project" does not by itself mean "update ADP". Use the task context; ask about the target only when it materially changes the action.
 
-The examples in [COMMANDS.md](COMMANDS.md) are natural-language intentions, not reserved keywords or executable commands.
+The examples in the optional [ADP Actions catalogue](COMMANDS.md) are natural-language intentions, not reserved keywords or executable commands.
 
 ## 1. Establish what was actually adopted
 
