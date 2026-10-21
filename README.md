@@ -90,7 +90,7 @@ See [`docs/USING_ADP.md`](docs/USING_ADP.md) for detailed integration patterns.
 
 ### Optional: visualize an ADP project
 
-[ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory) is a separate, optional human-facing analyzer for ADP projects. Its Rust scanner prototype works today, but the downloadable one-command launcher and graphical dashboard are **not yet released**. See [the Observatory usage and planned launcher guide](docs/OBSERVATORY.md). No Observatory installation or additional project metadata is required for ADP conformance.
+[ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory) is a separate, optional human-facing analyzer for ADP projects. Its Rust scanner and offline HTML dashboard run in the development executable. Experimental provenance-attested CI binaries exist, but an official installer and trusted automatic download-and-run launcher are **not yet released**. See [the Observatory usage and planned launcher guide](docs/OBSERVATORY.md). No Observatory installation or additional project metadata is required for ADP conformance.
 
 ## What ADP establishes
 
