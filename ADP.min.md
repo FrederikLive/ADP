@@ -46,6 +46,8 @@ Reading classes are a retrieval policy, not a reduction in authority. MUST/SHOUL
 
 **Optional user-triggered visualization (non-normative):** If the user explicitly asks to "show Observatory" or visualize the project, consult the [ADP-Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md) only then, with local-execution and installer trust boundaries. No routine reads, extra ADP records, or mandatory installation.
 
+**Optional user-requested ADP maintenance (non-normative):** Only when asked to check, update or migrate the project's adopted ADP version, use the [official update guide](https://github.com/FrederikLive/ADP/blob/main/docs/UPDATING_ADP.md). Checking is read-only; updating preserves project-specific state, reviews version/pin changes and verifies results within normal authorization. Never poll or migrate routinely. For examples of human requests (status, handoff, updates, Observatory), consult the [non-binding command catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md) only on request. No new ADP files, mandatory CLI, or agent chores.
+
 ## 3. Project control plane
 Create/adapt only where useful:
 ```text
