@@ -92,9 +92,9 @@ See [`docs/USING_ADP.md`](docs/USING_ADP.md) for detailed integration patterns.
 
 Ask your coding agent **"Check ADP for updates"** for a read-only comparison, **"Update ADP"** for a safe authorized integration update, or **"Migrate to ADP version X"** for a compatibility-aware migration. The [ADP Project Update Guide](docs/UPDATING_ADP.md) describes copied-file, submodule, attached and remote-reference adoption without overwriting local project instructions. It is consulted only when requested; ADP never requires routine update checks.
 
-### Example requests you can give an ADP-aware agent
+### ADP Actions — requests you can give a coding agent
 
-The [ADP user-request catalogue](docs/COMMANDS.md) groups optional natural-language requests such as "Show project status", "Resume the project", "Verify current work", "Review external analysis", "Show Observatory" and "Check ADP for updates". These are **intent examples**, not slash commands, special agent tools or replacements for a project's actual executable commands.
+The [ADP Actions catalogue](docs/COMMANDS.md) groups optional natural-language requests such as **"Show project status"**, **"Show project blockers"**, **"Why did we make this decision?"**, **"Check documentation consistency"**, **"What changed since the last milestone?"**, **"Check ADP for updates"**, and **"Show Observatory"**. Ask **"Show ADP Actions"** for a short overview. These are *intent examples*, not executable commands, special agent tools, mandatory background checks or replacements for the project's actual command surface.
 
 ### Optional: visualize an ADP project
 
@@ -125,7 +125,7 @@ README.md                      Human entrypoint
 docs/
 ├── USING_ADP.md               How to consume ADP from other projects/agents
 ├── UPDATING_ADP.md            On-demand existing-project ADP updates
-├── COMMANDS.md                Optional user-to-agent request catalogue
+├── COMMANDS.md                ADP Actions: optional natural-language requests
 ├── CONFORMANCE.md             Conformance model
 ├── COMPATIBILITY.md           Agent/harness integration guidance
 ├── VERSIONING.md              Protocol versioning rules
