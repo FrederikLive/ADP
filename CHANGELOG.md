@@ -3,6 +3,9 @@
 ## [Unreleased]
 
 ### Documentation
+- Added [docs/UPDATING_ADP.md](docs/UPDATING_ADP.md), a non-normative, user-requested guide for checking/updating/migrating ADP integrations in copied-file, pinned-submodule, mounted and remotely referenced projects while preserving local instructions.
+- Added [docs/COMMANDS.md](docs/COMMANDS.md), a non-binding human-to-agent request catalogue covering project status, verification, handoff, ADP maintenance, external analysis and optional Observatory.
+- Added tiny conditional update/command-discovery pointers to full/compact ADP and the generated AGENTS template; aligned human usage/versioning docs and repository validation. No new core protocol, mandatory manifest or routine background update checking.
 - Added an optional, user-triggered Observatory Agent Skill discovery hint in the portable/compact ADP descriptions and generated AGENTS.md template. Full launch and installation logic stays in the Observatory repository; no normative requirement or new project file was added.
 - Added an optional, non-normative ADP-Observatory human usage guide and linked it from the README and ADP usage documentation. The tool is not a required part of ADP, and proposed launch commands are explicitly marked as not yet released.
 
