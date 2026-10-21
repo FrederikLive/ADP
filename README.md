@@ -88,6 +88,14 @@ and instruct it to read `AGENTS.md` followed by `ADP.md`.
 
 See [`docs/USING_ADP.md`](docs/USING_ADP.md) for detailed integration patterns.
 
+### Updating ADP in an existing project
+
+Ask your coding agent **"Check ADP for updates"** for a read-only comparison, **"Update ADP"** for a safe authorized integration update, or **"Migrate to ADP version X"** for a compatibility-aware migration. The [ADP Project Update Guide](docs/UPDATING_ADP.md) describes copied-file, submodule, attached and remote-reference adoption without overwriting local project instructions. It is consulted only when requested; ADP never requires routine update checks.
+
+### Example requests you can give an ADP-aware agent
+
+The [ADP user-request catalogue](docs/COMMANDS.md) groups optional natural-language requests such as "Show project status", "Resume the project", "Verify current work", "Review external analysis", "Show Observatory" and "Check ADP for updates". These are **intent examples**, not slash commands, special agent tools or replacements for a project's actual executable commands.
+
 ### Optional: visualize an ADP project
 
 [ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory) is a separate, optional human-facing analyzer for ADP projects. Its Rust scanner and offline HTML dashboard run in the development executable. Experimental provenance-attested CI binaries exist, but an official installer and trusted automatic download-and-run launcher are **not yet released**. See [the Observatory usage and planned launcher guide](docs/OBSERVATORY.md). No Observatory installation or additional project metadata is required for ADP conformance.
@@ -116,6 +124,8 @@ README.md                      Human entrypoint
 
 docs/
 ├── USING_ADP.md               How to consume ADP from other projects/agents
+├── UPDATING_ADP.md            On-demand existing-project ADP updates
+├── COMMANDS.md                Optional user-to-agent request catalogue
 ├── CONFORMANCE.md             Conformance model
 ├── COMPATIBILITY.md           Agent/harness integration guidance
 ├── VERSIONING.md              Protocol versioning rules
