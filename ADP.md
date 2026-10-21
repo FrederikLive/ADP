@@ -71,6 +71,12 @@ bootstrap complete.
 
 If the **user explicitly asks** to "show Observatory", "open Observatory", or visualize this ADP project, an agent with appropriate local execution access can consult the optional [ADP-Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md). The companion lives in its own repository; this reference is **not** permission to execute unverified downloads, install software without appropriate authorization, or claim a user's browser opened from a remote environment. Do not read the skill, add project records, install Observatory, or do Observatory-related work during routine ADP development. ADP remains fully usable without it.
 
+## Optional on-demand ADP updates and user requests (non-normative)
+
+When the **user explicitly asks** to check or update the ADP version adopted by an existing project, consult the [ADP Project Update Guide](https://github.com/FrederikLive/ADP/blob/main/docs/UPDATING_ADP.md). A check is read-only; an authorized update reconciles the project's actual adoption method, local customizations and verification. Never poll for updates during normal development, silently replace project instructions, or treat GitHub documentation as permission to bypass the Authorization Envelope. A copied older ADP file may not have this reference; the user can supply the official guide directly.
+
+For examples of other human-to-agent requests—project status, verification, handoff, ADP updates and optional Observatory visualization—consult the [ADP user-request catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md) **only if the user asks what actions are available or the intended command behavior is unclear**. These are natural-language examples, not reserved commands or additional normative obligations.
+
 ## Reading and conformance policy
 
 ADP is self-contained, but agents should spend context on operative requirements rather than rereading every explanatory passage or unrelated template on every task. Use these classes:
