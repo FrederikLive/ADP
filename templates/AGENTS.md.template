@@ -29,7 +29,7 @@ Read continuity/status/active contract; inspect Git; run a cheap health check; c
 ## Optional user-requested ADP assistance
 - "Check/update ADP": only on explicit request, consult the [official ADP update guide](https://github.com/FrederikLive/ADP/blob/main/docs/UPDATING_ADP.md); checks are read-only and updates preserve project-specific state.
 - "Show Observatory": only on request, consult the [optional Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md); never install unverified software or claim remote agents opened the user's browser.
-- "What ADP actions are available?": summarize relevant examples from the [non-normative request catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md).
+- "Show ADP Actions": summarize relevant examples from the [optional ADP Actions catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md).
 Do not read these guides, check for updates, or add work records during routine development merely because these links exist.
 
 ## User-facing transitions
