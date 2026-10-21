@@ -3,7 +3,7 @@ import json, re, sys
 from pathlib import Path
 from urllib.parse import unquote
 ROOT=Path(__file__).resolve().parents[1]
-REQ=["ADP.md","ADP.min.md","AGENTS.md","README.md","LICENSE","VERSION","CHANGELOG.md","CITATION.cff","CONTRIBUTING.md","GOVERNANCE.md","SECURITY.md","CLAUDE.md","GEMINI.md",".github/copilot-instructions.md","examples/BOOTSTRAP_PROMPT.md","docs/USING_ADP.md","docs/MINIFIED.md","docs/CONFORMANCE.md","docs/COMPATIBILITY.md","docs/VERSIONING.md","docs/GLOSSARY.md","wiki/Home.md","wiki/Getting-Started.md","wiki/Conformance-and-Versioning.md","wiki/FAQ.md","wiki/_Sidebar.md","wiki/_Footer.md","schema/work.schema.json"]
+REQ=["ADP.md","ADP.min.md","AGENTS.md","README.md","LICENSE","VERSION","CHANGELOG.md","CITATION.cff","CONTRIBUTING.md","GOVERNANCE.md","SECURITY.md","CLAUDE.md","GEMINI.md",".github/copilot-instructions.md","examples/BOOTSTRAP_PROMPT.md","docs/USING_ADP.md","docs/UPDATING_ADP.md","docs/COMMANDS.md","docs/MINIFIED.md","docs/CONFORMANCE.md","docs/COMPATIBILITY.md","docs/VERSIONING.md","docs/GLOSSARY.md","wiki/Home.md","wiki/Getting-Started.md","wiki/Conformance-and-Versioning.md","wiki/FAQ.md","wiki/_Sidebar.md","wiki/_Footer.md","schema/work.schema.json"]
 errors=[]
 for x in REQ:
     if not (ROOT/x).exists(): errors.append("Missing required file: "+x)
@@ -22,6 +22,20 @@ if "Original filename and source path (exact)" not in adp: errors.append("ADP.md
 if "Intake file identification, naming, and storage" not in adp: errors.append("ADP.md external-analysis naming policy missing")
 if "short-id" not in mini or "short-id" not in adp: errors.append("External-analysis naming convention missing")
 if "Original filename and source path (exact)" not in adp: errors.append("External-analysis reconciliation source metadata missing")
+
+# Optional, on-demand guides must remain discoverable without normal-session reads.
+update_guide=(ROOT/"docs/UPDATING_ADP.md").read_text()
+request_catalogue=(ROOT/"docs/COMMANDS.md").read_text()
+agent_template=(ROOT/"templates/AGENTS.md.template").read_text()
+for name, body in (("ADP.md",adp),("ADP.min.md",mini),("AGENTS.md template",agent_template)):
+    if "UPDATING_ADP.md" not in body: errors.append(name+" missing update-guide discovery")
+    if "COMMANDS.md" not in body: errors.append(name+" missing optional command catalogue discovery")
+if "Observatory" not in request_catalogue: errors.append("Command catalogue missing Observatory example")
+for phrase in ("Check ADP for updates","Update ADP","Migrate to ADP"):
+    if phrase not in update_guide: errors.append("Update guide missing distinct intent: "+phrase)
+if "Do not routinely search" not in update_guide and "during routine development" not in update_guide:
+    errors.append("Update guide missing no-background-check boundary")
+if "read-only" not in update_guide.lower(): errors.append("Update guide missing read-only check boundary")
 
 # Keep public/versioned derivatives aligned with the canonical protocol version.
 cff=(ROOT/"CITATION.cff").read_text()
