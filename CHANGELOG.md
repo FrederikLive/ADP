@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Documentation
+- Added an optional, user-triggered Observatory Agent Skill discovery hint in the portable/compact ADP descriptions and generated AGENTS.md template. Full launch and installation logic stays in the Observatory repository; no normative requirement or new project file was added.
 - Added an optional, non-normative ADP-Observatory human usage guide and linked it from the README and ADP usage documentation. The tool is not a required part of ADP, and proposed launch commands are explicitly marked as not yet released.
 
 ## [2.7.1] - 2026-10-18
