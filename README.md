@@ -88,6 +88,10 @@ and instruct it to read `AGENTS.md` followed by `ADP.md`.
 
 See [`docs/USING_ADP.md`](docs/USING_ADP.md) for detailed integration patterns.
 
+### Optional: visualize an ADP project
+
+[ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory) is a separate, optional human-facing analyzer for ADP projects. Its Rust scanner prototype works today, but the downloadable one-command launcher and graphical dashboard are **not yet released**. See [the Observatory usage and planned launcher guide](docs/OBSERVATORY.md). No Observatory installation or additional project metadata is required for ADP conformance.
+
 ## What ADP establishes
 
 ADP defines nine core protocols:
