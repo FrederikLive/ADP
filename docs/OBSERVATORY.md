@@ -46,6 +46,10 @@ adp-observatory scan . --json
 
 The subcommand is implemented in the development executable. An installed, signed official application is not yet available.
 
+### Experimental preview installation (developers only)
+
+The experimental Bash and PowerShell installers have now passed CI download, signed-provenance verification, installation, and scanning tests on Linux x64, macOS ARM64, and Windows x64. They are **not official OS-code-signed installers** and require a trusted local Observatory checkout, GitHub CLI and a pinned successful Actions run plus full commit SHA. See the [preview installation instructions](https://github.com/FrederikLive/ADP-Observatory/blob/main/docs/RELEASING.md). Once installed and on PATH, users can run `adp-observatory .` from an ADP project. The signed and streamlined public installer remains a future release milestone.
+
 ### Installation and first-run concept
 
 Users should not need to copy executables into each ADP project or install a compiler. Observatory will provide verified releases for supported platforms and a safe, documented installation or one-shot launch mechanism. The downloaded application and caches belong in user-controlled system locations, **outside the target project**. No login, telemetry, administrator/root privileges, or automatic upload should be required.
