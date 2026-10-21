@@ -26,6 +26,9 @@ Default: HIGH. Continue ordinary authorized work. Stop only at hard checkpoints,
 ## Cold-start / resume
 Read continuity/status/active contract; inspect Git; run a cheap health check; continue the exact next unblocked action.
 
+## Optional user-requested visualization
+Only when the user asks to "show Observatory" or visualize the ADP project, consult the [official Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md). Never load it in routine work, install unverified software, or assume a remote agent can open the user's browser.
+
 ## User-facing transitions
 At meaningful substantial Contract/Milestone boundaries, communicate a concise Transition Brief: completed outcome, verification state, current milestone, material blockers/risks, next recommended phase, why it is next, first action, and execution state (CONTINUE / CHECKPOINT / COMPLETE). For CONTINUE, report and proceed automatically; do not turn the brief into a routine approval request. Persist human-scale direction in STATUS.md and exact resume state in CONTINUITY.md.
 
