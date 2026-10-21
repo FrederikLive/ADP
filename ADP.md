@@ -75,7 +75,7 @@ If the **user explicitly asks** to "show Observatory", "open Observatory", or vi
 
 When the **user explicitly asks** to check or update the ADP version adopted by an existing project, consult the [ADP Project Update Guide](https://github.com/FrederikLive/ADP/blob/main/docs/UPDATING_ADP.md). A check is read-only; an authorized update reconciles the project's actual adoption method, local customizations and verification. Never poll for updates during normal development, silently replace project instructions, or treat GitHub documentation as permission to bypass the Authorization Envelope. A copied older ADP file may not have this reference; the user can supply the official guide directly.
 
-For examples of other human-to-agent requests—project status, verification, handoff, ADP updates and optional Observatory visualization—consult the [ADP user-request catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md) **only if the user asks what actions are available or the intended command behavior is unclear**. These are natural-language examples, not reserved commands or additional normative obligations.
+For examples of other human-to-agent requests—project status, verification, handoff, ADP updates and optional Observatory visualization—consult the [ADP Actions catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md) **only if the user asks what actions are available or the intended command behavior is unclear**. These are natural-language examples, not reserved commands or additional normative obligations.
 
 ## Reading and conformance policy
 
