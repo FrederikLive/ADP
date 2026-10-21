@@ -70,6 +70,10 @@ Contract
 - [Conformance and Versioning](Conformance-and-Versioning.md)
 - [FAQ](FAQ.md)
 
+## ADP Actions (optional)
+
+Users can ask their coding agents to show project status, explain blockers or past decisions, check documentation drift, summarize progress since a milestone, check for ADP updates, or show Observatory where supported. The [ADP Actions catalogue](https://github.com/FrederikLive/ADP/blob/main/docs/COMMANDS.md) explains these natural-language requests; it is non-normative and is not a new startup reading requirement.
+
 ## Current protocol
 
 **ADP 2.7.1** adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability through the External Analysis Intake & Reconciliation Protocol. **ADP 2.6.0** introduced the reading and conformance policy and the external-analysis reconciliation protocol.
