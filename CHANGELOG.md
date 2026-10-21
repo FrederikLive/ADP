@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Documentation
+- Rebranded the optional human request catalogue as **ADP Actions** while retaining `docs/COMMANDS.md` as its stable link; added evidence-based, read-only examples for project blockers, decision rationale, documentation consistency and changes since a milestone. Kept the full guide on demand, not in normal agent context.
 - Added [docs/UPDATING_ADP.md](docs/UPDATING_ADP.md), a non-normative, user-requested guide for checking/updating/migrating ADP integrations in copied-file, pinned-submodule, mounted and remotely referenced projects while preserving local instructions.
 - Added [docs/COMMANDS.md](docs/COMMANDS.md), a non-binding human-to-agent request catalogue covering project status, verification, handoff, ADP maintenance, external analysis and optional Observatory.
 - Added tiny conditional update/command-discovery pointers to full/compact ADP and the generated AGENTS template; aligned human usage/versioning docs and repository validation. No new core protocol, mandatory manifest or routine background update checking.
