@@ -17,7 +17,7 @@ ADP exists to help agents work efficiently with minimal unnecessary token usage 
 
 ## How it works today (prototype)
 
-As of October 2026, Observatory has a tested **Rust command-line scanner**. It can inspect supported work-index structures and references, report limited protocol compatibility, and produce human-readable or JSON output. **It does not yet provide a downloadable installation, automatic launcher, graphical dashboard, or full ADP conformance assessment.**
+As of October 2026, Observatory has a tested **Rust command-line scanner and local offline HTML viewer**. It can inspect supported work-index structures and references, report limited protocol compatibility, and produce human-readable or JSON output. **It now provides a self-contained offline HTML dashboard in the development executable, but not an official installer, trusted automatic download launcher, historical dashboard, or full ADP conformance assessment.**
 
 For developers with Rust installed and the Observatory repository cloned separately, from the root of an ADP project run:
 
@@ -26,7 +26,7 @@ cargo run --manifest-path /absolute/path/to/ADP-Observatory/Cargo.toml -- .
 cargo run --manifest-path /absolute/path/to/ADP-Observatory/Cargo.toml -- scan . --json
 ```
 
-Replace the manifest path with the actual location of your Observatory checkout. The `.` refers to the **current ADP project**. The first command generates and attempts to open a local HTML report, stored outside the target project. The second provides headless JSON without opening a browser. The report may contain sensitive project paths and should be handled accordingly. See [the Observatory README](https://github.com/FrederikLive/ADP-Observatory#current-prototype) for its implementation status.
+Replace the manifest path with the actual location of your Observatory checkout. The `.` refers to the **current ADP project**. The first command generates and attempts to open a local HTML report, stored outside the target project. The second provides headless JSON without opening a browser. The report may contain sensitive project paths and should be handled accordingly. Experimental Windows/Linux/macOS CI binaries with signed build-provenance attestations exist, but are not official OS-code-signed releases; follow the [manual verification guidance](https://github.com/FrederikLive/ADP-Observatory/blob/main/docs/LAUNCHER.md) before testing them. See [the Observatory README](https://github.com/FrederikLive/ADP-Observatory#current-prototype) for its implementation status.
 
 ## Intended user experience (not released yet)
 
