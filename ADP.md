@@ -67,6 +67,10 @@ Actually run the generated setup and validation commands before declaring the
 bootstrap complete.
 ```
 
+## Optional on-demand project visualization (non-normative)
+
+If the **user explicitly asks** to "show Observatory", "open Observatory", or visualize this ADP project, an agent with appropriate local execution access can consult the optional [ADP-Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md). The companion lives in its own repository; this reference is **not** permission to execute unverified downloads, install software without appropriate authorization, or claim a user's browser opened from a remote environment. Do not read the skill, add project records, install Observatory, or do Observatory-related work during routine ADP development. ADP remains fully usable without it.
+
 ## Reading and conformance policy
 
 ADP is self-contained, but agents should spend context on operative requirements rather than rereading every explanatory passage or unrelated template on every task. Use these classes:
