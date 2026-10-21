@@ -30,7 +30,14 @@ agent_template=(ROOT/"templates/AGENTS.md.template").read_text()
 for name, body in (("ADP.md",adp),("ADP.min.md",mini),("AGENTS.md template",agent_template)):
     if "UPDATING_ADP.md" not in body: errors.append(name+" missing update-guide discovery")
     if "COMMANDS.md" not in body: errors.append(name+" missing optional command catalogue discovery")
-if "Observatory" not in request_catalogue: errors.append("Command catalogue missing Observatory example")
+if "Observatory" not in request_catalogue: errors.append("ADP Actions catalogue missing Observatory example")
+if not request_catalogue.startswith("# ADP Actions"):
+    errors.append("Human-facing command catalogue must use the ADP Actions title")
+for phrase in ("Show project blockers","Why did we make this decision?","Check documentation consistency","What changed since the last milestone?"):
+    if phrase not in request_catalogue:
+        errors.append("ADP Actions catalogue missing optional request example: "+phrase)
+if "no background" not in request_catalogue.lower() and "no automatic" not in request_catalogue.lower():
+    errors.append("ADP Actions catalogue missing no-background-work boundary")
 for phrase in ("Check ADP for updates","Update ADP","Migrate to ADP"):
     if phrase not in update_guide: errors.append("Update guide missing distinct intent: "+phrase)
 if "Do not routinely search" not in update_guide and "during routine development" not in update_guide:
