@@ -22,10 +22,11 @@ As of October 2026, Observatory has a tested **Rust command-line scanner**. It c
 For developers with Rust installed and the Observatory repository cloned separately, from the root of an ADP project run:
 
 ```sh
-cargo run --manifest-path /absolute/path/to/ADP-Observatory/Cargo.toml -- . --json
+cargo run --manifest-path /absolute/path/to/ADP-Observatory/Cargo.toml -- .
+cargo run --manifest-path /absolute/path/to/ADP-Observatory/Cargo.toml -- scan . --json
 ```
 
-Replace the manifest path with the actual location of your Observatory checkout. The `.` refers to the **current ADP project**. Omit `--json` for the current text output. See [the Observatory README](https://github.com/FrederikLive/ADP-Observatory#current-prototype) for its implementation status.
+Replace the manifest path with the actual location of your Observatory checkout. The `.` refers to the **current ADP project**. The first command generates and attempts to open a local HTML report, stored outside the target project. The second provides headless JSON without opening a browser. The report may contain sensitive project paths and should be handled accordingly. See [the Observatory README](https://github.com/FrederikLive/ADP-Observatory#current-prototype) for its implementation status.
 
 ## Intended user experience (not released yet)
 
@@ -35,7 +36,7 @@ Once the application has a verified, platform-specific installer or launcher, a 
 adp-observatory .
 ```
 
-That command is a **future target**, not a working installation instruction today. The intended behavior is to find the target project, analyze it without modifying files, start a local-only dashboard, and open the dashboard in the user's browser.
+That command **works in the development executable**, but a user must first obtain or build the binary. It is **not** an available system-wide command until Observatory is installed. The current dashboard is a self-contained offline HTML report, not a listening web server.
 
 For terminal, CI, and agent workflows, a separate explicit scan mode should emit machine-readable results without opening a browser:
 
@@ -43,7 +44,7 @@ For terminal, CI, and agent workflows, a separate explicit scan mode should emit
 adp-observatory scan . --json
 ```
 
-The planned subcommand is not implemented yet; the prototype currently takes the project path directly.
+The subcommand is implemented in the development executable. An installed, signed official application is not yet available.
 
 ### Installation and first-run concept
 
