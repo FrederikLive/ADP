@@ -1,6 +1,6 @@
 # Minified ADP Distribution
 
-`ADP.min.md` is a **semantically compressed distribution** of ADP 2.7.1 for coding-agent contexts where token/context cost matters.
+`ADP.min.md` is a **semantically compressed distribution** of ADP 2.8.0 for coding-agent contexts where token/context cost matters.
 
 ## Why semantic compression
 
@@ -28,6 +28,7 @@ The compact distribution must preserve at minimum:
 - autonomous continuation;
 - Transition Transparency, Transition Briefs, and next-phase/exact-action distinction;
 - delegated/concurrent execution topology, intent preservation, Execution Briefs, mutation posture, isolation, reconciliation, and unlanded-work preservation;
+- conditional capability-aware role/model assignment, resource policy, advisory/native/external mode boundaries, director authority and safe failover;
 - soft/hard checkpoints and retry discipline;
 - verification states;
 - Continuity Protocol/cold start/context pressure;
