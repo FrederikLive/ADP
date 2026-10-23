@@ -1,7 +1,7 @@
 # ADP.min.md — Agent Development Protocol, Compact Distribution
 
 **Protocol:** ADP — Agent Development Protocol
-**Protocol version:** 2.7.1
+**Protocol version:** 2.8.0
 **Distribution:** compact / machine-consumption
 **Canonical source:** `ADP.md`
 **Author:** Frederik Smith
@@ -163,6 +163,19 @@ Never reset/delete/recycle a delegated workspace with unresolved unlanded work u
 The coordinator is normally the primary human-facing interface and uses existing Transition Briefs; worker completion does not create a routine permission gate. Prefer event-driven completion/escalation over model polling when the harness supports it. Keep process/session/pane/watch state ephemeral; persist only recovery-relevant delegated state.
 
 ADP conformance never requires delegation. If delegation is unavailable or not beneficial, execute directly.
+
+
+## 7C. Capability-aware agent assignment and failover
+
+Roles are authority-limited project responsibilities, NOT permanent model identities: human director retains reserved/final scope, cost and consequential decisions; designated Lead Programmer/coordinator may make ordinary reversible technical decisions and assign/reconcile work only inside the Authorization Envelope. Assistant/Specialist/Reviewer receive bounded Execution Briefs. Substituting a worker or acting lead cannot expand authority. Record unresolved reserved questions in Contract/continuity, block only affected work, and continue independent authorized tasks.
+
+For substantial delegated/role-assigned work, assess Contract capability/risk/tools/context/privacy/review needs; verify which providers/models/harnesses are actually eligible and available (distinguish UNKNOWN), apply hard authority/security/permission/budget constraints BEFORE optimizing quality, reliability, tool fit, latency, and resource usage. Prefer observed verified project outcomes to permanent unsupported model rankings. Select the smallest useful topology; default to direct execution. Reassess materially changed conditions.
+
+Optional `.project/AGENT_POLICY.json` expresses preferences only; no required manifest, API, or provider adapter. Profiles: `maximum_quality`, `balanced`, `subscription_quota_aware`, `cost_capped`, `privacy_first`. Profiles never waive privacy, evidence, spending limits, hard checkpoints, or authorization; subscription quotas are NOT paid API credits. Never assume exact cost/quota from unavailable telemetry or authorize spending through a generated policy.
+
+Modes: `advisory` (portable recommendations; no claim of switching), `harness_native` (only documented, actually available harness operations), `external` (only separately installed/authorized orchestrator). ADP is NOT itself a background service or automatic cross-provider router. No overnight-continuity guarantee. Missing capability is not non-conformance.
+
+On rate limit/context failure/outage: classify → preserve unlanded work and checkpoint safely → update Contract/`CONTINUITY.md` with last good state, Git changes, verification, next action → check successor eligibility, budget, isolation and existing authority → cold-start successor inspects actual Git/code/evidence before any potentially non-idempotent retry → coordinator reconciles outcomes. No unapproved provider/paid fallback; if no safe eligible successor, block affected work and continue unrelated ready work. Independent review is evidence-based; model diversity alone proves nothing. Only recovery-useful assignment info MAY be persisted in `WORK.json`; keep transient sessions/quotas out of canonical truth. This is a CONDITIONAL extension of `Delegated and concurrent execution`, not a second authority hierarchy.
 
 ## 8. Soft and Hard checkpoints
 **Soft checkpoint:** persist, then continue. Use after substantial contract completion, major refactor/migration, public interface/schema change, significant architecture decision, important test-state change, context pressure, or meaningful investigation result. Finish current atomic unit if safe, validate narrowly, update durable state/known-good revision, checkpoint Git if appropriate, continue.
@@ -372,4 +385,4 @@ When told to apply ADP:
 21. Finish with evidence, not confidence language.
 
 ---
-**End compact ADP 2.7.1.** Read `ADP.md` for full normative detail and dispute resolution.
+**End compact ADP 2.8.0.** Read `ADP.md` for full normative detail and dispute resolution.

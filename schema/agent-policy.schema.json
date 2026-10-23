@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/FrederikLive/ADP/schema/agent-policy.schema.json",
+  "title": "Optional ADP Agent Assignment Policy",
+  "description": "Preferences only. Cannot expand the Authorization Envelope or permit spending, cross-provider access, or privileged actions.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "orchestration",
+    "resources"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "orchestration": {
+      "type": "object",
+      "required": [
+        "mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "advisory",
+            "harness_native",
+            "external"
+          ]
+        }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "required": [
+        "optimization"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "optimization": {
+          "enum": [
+            "maximum_quality",
+            "balanced",
+            "subscription_quota_aware",
+            "cost_capped",
+            "privacy_first"
+          ]
+        },
+        "max_api_spend_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "prefer_existing_entitlements": {
+          "type": "boolean"
+        },
+        "approved_providers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "prohibited_providers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/rolePreference"
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evaluate_per_contract": {
+          "type": "boolean"
+        },
+        "discover_available_models": {
+          "type": "boolean"
+        },
+        "require_capability_evidence": {
+          "type": "boolean"
+        },
+        "fallback_on": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "quota_exceeded",
+              "provider_unavailable",
+              "context_pressure",
+              "tool_unavailable"
+            ]
+          }
+        }
+      }
+    },
+    "continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "checkpoint_before_handoff": {
+          "type": "boolean"
+        },
+        "verify_successor_state": {
+          "type": "boolean"
+        },
+        "continue_independent_work": {
+          "type": "boolean"
+        },
+        "preserve_unlanded_changes": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "rolePreference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "preferred_provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "eligible_providers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "selection": {
+          "enum": [
+            "capability_based",
+            "preferred_then_eligible"
+          ]
+        }
+      }
+    }
+  }
+}

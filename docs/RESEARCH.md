@@ -28,3 +28,12 @@ Execution Briefs are projections rather than new sources of truth. This preserve
 Concurrent mutation isolation and reconciliation address two distinct failure modes: workspace collision while work is in flight, and false confidence after a worker reports completion. Isolation prevents agents from overwriting or testing against one another's partial changes; reconciliation prevents a worker's self-report from becoming authoritative without comparison to the Contract, canonical documents, actual artifacts, and evidence.
 
 Future empirical work should compare direct versus delegated execution on completion quality, elapsed time, token/context cost, conflict rate, intervention rate, verification defects, and recovery after worker/session failure.
+
+
+## Capability-aware assignment and resource-policy rationale (2.8.0)
+
+A model-vendor label is not a durable project role; the same Contract may span providers, context windows, and sessions. Existing ADP delegation, Authorization Envelope, and cold-start continuity already solve much of the handoff problem. ADP 2.8.0 makes assignment and failover policy explicit while avoiding a mandatory orchestrator.
+
+Eligibility must precede scoring: permissions, paid access, confidentiality, context/tool requirements and mandatory review are not negotiable weights. Quota telemetry can be absent or stale; a subscription's usage allowance is not an API payment authorization. Evidence from actual Contract outcomes is more meaningful than generic marketing rankings. Stable policy is optional; runtime provider health, session identifiers, and rapidly changing quotas should not pollute canonical project truth.
+
+The distinct `advisory`, `harness_native` and `external` modes avoid false portability guarantees. A request router can choose an API model, but cannot independently preserve files, command side effects, reviewer independence or the lifecycle of an entire coding session. A future reference orchestrator may add these runtime features without turning them into mandatory ADP dependencies.

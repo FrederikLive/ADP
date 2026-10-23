@@ -6,7 +6,7 @@ ADP uses Semantic Versioning: `MAJOR.MINOR.PATCH`.
 - MINOR: backwards-compatible normative addition.
 - PATCH: non-breaking clarification/correction.
 
-Keep `VERSION`, `ADP.md`, `CHANGELOG.md`, `CITATION.cff`, and release tag aligned. Recommended tag for this release: `v2.7.1`.
+Keep `VERSION`, `ADP.md`, `CHANGELOG.md`, `CITATION.cff`, and release tag aligned. Recommended tag for this release: `v2.8.0`.
 
 Long-running target projects should pin/record the ADP version they adopted.
 

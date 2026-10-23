@@ -22,3 +22,13 @@
 **Transition Brief:** concise user-facing report at a meaningful development boundary showing completion, verification, next phase, rationale, first action, and execution state.  
 **Transition Transparency:** property that makes meaningful development transitions legible to the human operator without creating routine approval gates.  
 **Cold Start:** successor session without previous conversation.
+
+
+**Capability-aware Assignment:** optional selection of a role/harness/model based on a Contract's requirements, observed eligible capabilities, resource policy and available evidence, subject to existing authority.  
+**Director:** human project owner with final authority over reserved product/scope/budget and consequential decisions.  
+**Lead Programmer:** designated coordinating role permitted to make ordinary technical decisions and assign work only within the Authorization Envelope; not a new permission grant.  
+**Acting Coordinator:** already-authorized substitute that recovers an unavailable coordinator's bounded duties through cold start.  
+**Agent Assignment Policy:** optional `.project/AGENT_POLICY.json` preferences; not a source of authorization.  
+**Routing Mode:** `advisory` (recommend only), `harness_native` (supported native operations), `external` (separate authorized runtime).  
+**Resource Profile:** optimization preference that never waives budget, privacy, security or verification requirements.  
+**Model Failover:** checked continuation by an eligible successor after safe persistence and cold-start verification; not implicit in ordinary API fallback.

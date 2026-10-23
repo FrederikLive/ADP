@@ -26,6 +26,9 @@ Default: HIGH. Continue ordinary authorized work. Stop only at hard checkpoints,
 ## Cold-start / resume
 Read continuity/status/active contract; inspect Git; run a cheap health check; continue the exact next unblocked action.
 
+## Optional capability-aware assignment
+If role-based/model selection or failover matters, consult the active Contract and optional `.project/AGENT_POLICY.json` preferences; use `ADP.md` capability-aware assignment rules. Do not assume the harness can switch models or authorize paid/API access. Roles do not expand the Authorization Envelope.
+
 ## Optional user-requested ADP assistance
 - "Check/update ADP": only on explicit request, consult the [official ADP update guide](https://github.com/FrederikLive/ADP/blob/main/docs/UPDATING_ADP.md); checks are read-only and updates preserve project-specific state.
 - "Show Observatory": only on request, consult the [optional Observatory Agent Skill](https://github.com/FrederikLive/ADP-Observatory/blob/main/skills/adp-observatory/SKILL.md); never install unverified software or claim remote agents opened the user's browser.
