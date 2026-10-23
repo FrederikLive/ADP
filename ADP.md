@@ -1,6 +1,6 @@
 # ADP.md
 
-> **Agent Development Protocol — Version 2.7.1 (2026-10-18)**
+> **Agent Development Protocol — Version 2.8.0 (2026-10-23)**
 >
 > **Design goal:** autonomous, resumable, cross-agent software delivery with minimal unnecessary human interruption.
 >
@@ -12,7 +12,7 @@
 >
 > **Purpose:** Copy this single file into a new or existing coding project, open that folder in a capable AI coding harness, describe the project you want to build, and use its reading policy to bootstrap the repository without skipping applicable normative requirements.
 
-> Version 2.7.1 clarifies Git authorization, bootstrap decisions, and continuity. Version 2.7.0 adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability. Version 2.6.0 added a **Reading and Conformance Policy** and an **External Analysis Intake & Reconciliation Protocol**, clarifying required versus conditional reading and independent report reconciliation.
+> Version 2.8.0 adds optional capability-aware role/model selection, resource policies, and safe failover. Version 2.7.1 clarifies Git authorization, bootstrap decisions, and continuity. Version 2.7.0 adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability. Version 2.6.0 added a **Reading and Conformance Policy** and an **External Analysis Intake & Reconciliation Protocol**, clarifying required versus conditional reading and independent report reconciliation.
 >
 > Version 2.5.0 added **Delegated & Concurrent Execution**: ADP now defines when delegation is useful, how user intent survives delegation, how concurrent mutating agents are isolated, how delegated results are reconciled before becoming authoritative project state, and how unlanded delegated work is preserved. Delegation remains optional and proportional: direct single-agent execution is still the default when it is simpler or safer. Version 2.5.0 builds on Version 2.4 Transition Transparency and preserves the Version 2 autonomy and continuity architecture: **Authorization Envelope**, **Autonomy Protocol**, **Project → Milestone → Workstream → Contract → Atomic Unit → Evidence**, **soft and hard checkpoints**, **retry budgets**, and the **Continuity Protocol**.
 
@@ -1256,6 +1256,73 @@ Record, as applicable:
 - exact next reconciliation or resume action.
 
 Do not persist transient orchestration noise that has no recovery value.
+
+---
+
+
+# CAPABILITY-AWARE AGENT ASSIGNMENT AND FAILOVER PROTOCOL
+
+This section extends the existing Delegated and Concurrent Execution Protocol; it does not introduce another source of authority. Agent **roles**, particular **models**, and the **harness** that executes them are different concerns. The same role may be fulfilled by different authorized models over the life of a Contract. A model's quality or apparent confidence cannot grant it additional permissions.
+
+**Applicability:** Evaluate this section when selecting a worker/model for substantial delegated work, when a user requests role-based assignment, or when a project has opted into an agent assignment policy. Otherwise direct execution remains the default. A conformant project does not need multiple agents, access to model catalogues, or an orchestrator.
+
+## Authority and responsibility
+
+- The **human director/project owner** retains final authority over reserved decisions, objectives, spending, and changes beyond the Authorization Envelope. Model choice cannot override that authority.
+- An explicitly designated **Lead Programmer** MAY decide reversible technical implementation matters within the existing Authorization Envelope, maintain the plan, assign authorized work, and reconcile results. The title alone does not authorize Git pushes, new spending, production actions, secrets access, or hard-checkpoint decisions.
+- An **Assistant Programmer**, **Specialist**, or **Reviewer** receives bounded authority through an Execution Brief. Worker/model substitution MUST preserve the same or narrower authority, scope, mutation posture, and verification requirements.
+- The Lead Programmer is normally the existing **coordinating agent**. If it becomes unavailable, an authorized acting coordinator MAY recover its role through the cold-start procedure and reconcile outstanding work. A model or harness MUST NOT self-appoint to an elevated role beyond established project/user authorization.
+- A materially unresolved reserved decision is recorded in the active Contract and continuity/status as appropriate, with options, recommendation, owner, impact, and affected work. Block only dependent work; continue other authorized, dependency-ready work. Do not infer approval from silence or absence.
+
+## Contract capability assessment and eligibility
+
+For substantial work needing selection, the contract author/coordinator SHOULD assess only what is material:
+
+1. Required capabilities (such as languages/stack, reasoning, UI, security, long-context analysis), tool and repository access, context size, data sensitivity, and execution duration.
+2. Risk, verification burden, review independence, dependencies, parallel-mutation isolation, and relevant deadlines.
+3. Available harness/model/provider options based on *observed or documented* capabilities. Distinguish AVAILABLE, UNAVAILABLE, and UNKNOWN; do not fabricate quotas, prices, model rankings, or provider support.
+4. **Hard eligibility** first: authorization, confidentiality, tool access, sufficient context, budget/payment permissions, data location, and mandatory review. Ineligible options MUST NOT be selected merely because they score well.
+5. Among eligible options, make a proportionate quality/reliability/tool-fit/availability/latency/resource tradeoff under the chosen resource policy. Consider measured project outcomes and actual verification, not provider marketing or fixed permanent model rankings. Record a short rationale for material assignments.
+6. Execute directly if delegation or switching adds more cost, risk, or overhead than benefit. Reassess when task difficulty, evidence, resource availability, or contract requirements materially change.
+
+A Contract MAY state capability requirements and review expectations in its existing Markdown file. An Execution Brief MAY carry the selected role and verified execution constraints. Neither a suggested provider nor a chosen model becomes product truth.
+
+## Resource policy and budget boundaries
+
+A project MAY opt into a small repository-local policy file at `.project/AGENT_POLICY.json` (see the non-normative compatibility guide and schema). It is optional and SHOULD be consulted only for applicable selection/routing work. When absent, use current instructions and available execution options without inventing a budget, provider preference, or routing feature.
+
+Recommended optimization preferences are `maximum_quality`, `balanced`, `subscription_quota_aware`, `cost_capped`, and `privacy_first`. They express priorities, NOT authority. Privacy, safety, required verification, and actual spending limits remain constraints in every profile. A preference for maximum quality does not authorize unlimited spending; a cost cap does not excuse inadequate verification.
+
+- Distinguish subscription or interactive-use quotas from paid API billing. A paid subscription MUST NOT be assumed to grant API credits or cross-provider entitlements.
+- Budget/usage remaining may be used for selection only if a trusted harness/provider exposes it. Unknown availability MUST be reported as unknown. A quota or time-reset estimate is not a guarantee.
+- No agent may provision paid resources, switch to billable API access, exceed a spending ceiling, or change credentials without existing specific authorization. A zero paid-API budget means no new paid API usage through the orchestrator.
+- Prefer the smallest eligible execution topology; conserve scarce capacity for tasks where stronger capabilities materially improve outcomes. Do not spend tokens continuously polling worker completion when event notifications are available.
+
+## Advisory, harness-native, and external execution modes
+
+`advisory` (portable default) recommends eligible assignments and human-executable handoffs; it MUST NOT claim to have switched models.
+
+`harness_native` MAY invoke a harness's documented selection/delegation operations when actually exposed and authorized. Native model selection is not automatically cross-vendor session failover.
+
+`external` MAY use a separately installed, explicitly authorized orchestrator/provider adapter. ADP itself is a file/repository protocol, not a background daemon, process supervisor, model router, credential store, or guarantee of uninterrupted overnight execution. A harness lacking the requested functionality MUST state that limitation and continue any useful authorized work it can perform.
+
+## Failure, quota exhaustion, and cross-model handoff
+
+Treat ordinary worker failure, model unavailability, context pressure, and rate limits as recoverable execution events when possible:
+
+1. Classify the failure (context pressure, retryable rate limit, actual quota exhaustion, provider outage, missing access, tool mismatch, failed verification, or unknown). Do not assume all errors are equivalent or repeatedly retry blindly.
+2. Before reassigning, preserve unlanded work, checkpoint a coherent state where safe, update the active Contract/`docs/CONTINUITY.md`, identify the last known-good state, pending decisions, relevant Git branch/workspace, verification and exact next action. Avoid recording credentials or unnecessary transient runtime identifiers.
+3. Check authorization, budget, security eligibility, mutation isolation, and availability of the successor. Never route to an unapproved provider or use a billable fallback to evade a quota.
+4. The successor MUST perform the existing cold-start procedure: inspect current Git/code and evidence, verify what actually happened, and avoid blindly repeating non-idempotent, destructive, or possibly partially completed commands. A handoff packet is evidence to check, not permission to trust prose.
+5. Reconcile successor work under the original Contract and verification criteria before changing authoritative status. If no safe eligible successor exists, mark affected work blocked, then select another authorized independent task if one is ready. Stop only when the ordinary ADP stopping conditions genuinely apply.
+
+Independent review SHOULD be used for materially security-critical/high-risk changes when authorized and beneficial. Independence means separate examination and evidence, not simply invoking a differently branded model. Claims of quality MUST be backed by tests, inspection, or other relevant evidence.
+
+## Persistence, portability, and conformance
+
+Keep human/project authority in its existing canonical documents and the Authorization Envelope. The optional policy file expresses preferences within those boundaries; it MUST NOT grant itself or its generator elevated authority. Keep transient prices, remaining token counts, session IDs, and provider health outside durable project truth. The existing `.project/WORK.json` MAY record only recovery-useful assignment metadata, not a new mandatory execution log.
+
+Cross-provider/automatic switching is an OPTIONAL harness capability. Agents without it remain conformant by assessing options where relevant, documenting truthful limitations, preserving continuity, and continuing safe work directly. Do not add mandatory vendor-specific files or adapters to a project merely to satisfy this section.
 
 ---
 

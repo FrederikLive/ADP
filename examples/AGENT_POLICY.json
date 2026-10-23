@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "orchestration": {
+    "mode": "advisory"
+  },
+  "resources": {
+    "optimization": "subscription_quota_aware",
+    "max_api_spend_usd": 0,
+    "prefer_existing_entitlements": true,
+    "approved_providers": [
+      "openai",
+      "google"
+    ]
+  },
+  "roles": {
+    "lead_programmer": {
+      "preferred_provider": "openai",
+      "selection": "preferred_then_eligible"
+    },
+    "assistant_programmer": {
+      "preferred_provider": "google",
+      "selection": "capability_based"
+    },
+    "reviewer": {
+      "selection": "capability_based"
+    }
+  },
+  "routing": {
+    "evaluate_per_contract": true,
+    "discover_available_models": true,
+    "require_capability_evidence": true,
+    "fallback_on": [
+      "quota_exceeded",
+      "provider_unavailable",
+      "context_pressure"
+    ]
+  },
+  "continuity": {
+    "checkpoint_before_handoff": true,
+    "verify_successor_state": true,
+    "continue_independent_work": true,
+    "preserve_unlanded_changes": true
+  }
+}
