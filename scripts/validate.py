@@ -3,7 +3,7 @@ import json, re, sys
 from pathlib import Path
 from urllib.parse import unquote
 ROOT=Path(__file__).resolve().parents[1]
-REQ=["ADP.md","ADP.min.md","AGENTS.md","README.md","LICENSE","VERSION","CHANGELOG.md","CITATION.cff","CONTRIBUTING.md","GOVERNANCE.md","SECURITY.md","CLAUDE.md","GEMINI.md",".github/copilot-instructions.md","examples/BOOTSTRAP_PROMPT.md","docs/USING_ADP.md","docs/UPDATING_ADP.md","docs/COMMANDS.md","docs/MINIFIED.md","docs/CONFORMANCE.md","docs/COMPATIBILITY.md","docs/VERSIONING.md","docs/GLOSSARY.md","wiki/Home.md","wiki/Getting-Started.md","wiki/Conformance-and-Versioning.md","wiki/FAQ.md","wiki/_Sidebar.md","wiki/_Footer.md","schema/work.schema.json"]
+REQ=["ADP.md","ADP.min.md","AGENTS.md","README.md","LICENSE","VERSION","CHANGELOG.md","CITATION.cff","CONTRIBUTING.md","GOVERNANCE.md","SECURITY.md","CLAUDE.md","GEMINI.md",".github/copilot-instructions.md","examples/BOOTSTRAP_PROMPT.md","docs/USING_ADP.md","docs/UPDATING_ADP.md","docs/COMMANDS.md","docs/MINIFIED.md","docs/CONFORMANCE.md","docs/COMPATIBILITY.md","docs/VERSIONING.md","docs/GLOSSARY.md","wiki/Home.md","wiki/Getting-Started.md","wiki/Conformance-and-Versioning.md","wiki/FAQ.md","wiki/_Sidebar.md","wiki/_Footer.md","schema/work.schema.json","schema/agent-policy.schema.json","examples/AGENT_POLICY.json","docs/AGENT_ORCHESTRATION.md","wiki/Capability-aware-Assignment.md","scripts/validate_agent_policy.py"]
 errors=[]
 for x in REQ:
     if not (ROOT/x).exists(): errors.append("Missing required file: "+x)
@@ -66,7 +66,7 @@ if "external analysis intake & reconciliation" not in wiki_home.lower(): errors.
 if "external audit or ai-generated analysis report" not in wiki_faq.lower(): errors.append("wiki/FAQ.md external-analysis guidance missing")
 if f"**Current version:** {v}" not in wiki_sidebar: errors.append("wiki/_Sidebar.md current version mismatch")
 if f"Version {v}" not in wiki_footer: errors.append("wiki/_Footer.md current version mismatch")
-anchors=["short-id","original filename","Authorization Envelope","Autonomous continuation","Transition transparency","Transition Brief","Delegated and concurrent execution","Execution Brief","READ_ONLY","MUTATING","Concurrent mutation isolation","reconciliation","unlanded","Next recommended phase","Exact next action","Soft checkpoint","Hard checkpoint","VERIFIED","FAILED","NOT RUN","NOT AVAILABLE","Continuity protocol","Cold-start successor","WORK.json","Git and file safety","Security and external side effects","Definition of done","Reading and conformance policy","External analysis intake and reconciliation","PARTIALLY CONFIRMED","ALREADY RESOLVED","UNRESOLVED"]
+anchors=["Capability-aware agent assignment","harness_native","subscription_quota_aware","Lead Programmer","Director","failover","short-id","original filename","Authorization Envelope","Autonomous continuation","Transition transparency","Transition Brief","Delegated and concurrent execution","Execution Brief","READ_ONLY","MUTATING","Concurrent mutation isolation","reconciliation","unlanded","Next recommended phase","Exact next action","Soft checkpoint","Hard checkpoint","VERIFIED","FAILED","NOT RUN","NOT AVAILABLE","Continuity protocol","Cold-start successor","WORK.json","Git and file safety","Security and external side effects","Definition of done","Reading and conformance policy","External analysis intake and reconciliation","PARTIALLY CONFIRMED","ALREADY RESOLVED","UNRESOLVED"]
 for a in anchors:
     if a.lower() not in mini.lower(): errors.append("ADP.min.md missing semantic anchor: "+a)
 ratio=len(mini.encode())/max(1,len(adp.encode()))
@@ -82,6 +82,11 @@ for p in ROOT.rglob("*.md"):
         if not t or t.startswith(("http://","https://","mailto:","#")): continue
         t=unquote(t.split("#",1)[0].split("?",1)[0])
         if t and not (p.parent/t).resolve().exists(): errors.append(f"Broken local link: {p.relative_to(ROOT)} -> {t}")
+if not (ROOT/"scripts/validate_agent_policy.py").exists(): errors.append("Missing agent-policy test script")
+else:
+    import subprocess
+    a=subprocess.run([sys.executable,str(ROOT/"scripts/validate_agent_policy.py")],capture_output=True,text=True)
+    if a.returncode: errors.append("Agent-policy tests failed: "+(a.stderr or a.stdout))
 if not (ROOT/"scripts/validate_git_policy.py").exists(): errors.append("Missing Git policy test script")
 else:
     import subprocess
