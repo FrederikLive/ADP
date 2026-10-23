@@ -77,6 +77,8 @@ Users can ask their coding agents to show project status, explain blockers or pa
 
 ## Current protocol
 
+The **External Analysis Intake & Reconciliation Protocol** remains part of the existing core, retaining source traceability and independent findings review.
+
 **ADP 2.8.0** adds optional capability-aware agent assignment, director/lead role boundaries, resource profiles and safe model failover without mandating a harness. **ADP 2.7.x** standardized Git authorization and external-analysis intake traceability; **ADP 2.6.0** added reading policy and external-analysis reconciliation.
 
 **Author:** Frederik Smith  
