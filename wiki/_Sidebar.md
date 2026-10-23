@@ -5,6 +5,7 @@
 - [Core Model](Core-Model.md)
 - [Autonomy & Checkpoints](Autonomy-and-Checkpoints.md)
 - [Delegated & Concurrent Execution](Delegated-and-Concurrent-Execution.md)
+- [Capability-aware Assignment](Capability-aware-Assignment.md)
 - [Verification & Evidence](Verification-and-Evidence.md)
 - [Continuity & Handoffs](Continuity-and-Handoffs.md)
 - [Transition Transparency](Transition-Transparency.md)
@@ -16,4 +17,4 @@
 ---
 
 **Canonical protocol:** [ADP.md](https://github.com/FrederikLive/ADP/blob/main/ADP.md)  
-**Current version:** 2.7.1
+**Current version:** 2.8.0

@@ -62,6 +62,7 @@ Contract
 - [Core Model](Core-Model.md)
 - [Autonomy and Checkpoints](Autonomy-and-Checkpoints.md)
 - [Delegated and Concurrent Execution](Delegated-and-Concurrent-Execution.md)
+- [Capability-aware Assignment and Failover](Capability-aware-Assignment.md)
 - [Verification and Evidence](Verification-and-Evidence.md)
 - [Continuity and Handoffs](Continuity-and-Handoffs.md)
 - [Transition Transparency](Transition-Transparency.md)
@@ -76,7 +77,7 @@ Users can ask their coding agents to show project status, explain blockers or pa
 
 ## Current protocol
 
-**ADP 2.7.1** adds standardized external-analysis intake identification, filename conventions, reconciliation-record naming, and archive traceability through the External Analysis Intake & Reconciliation Protocol. **ADP 2.6.0** introduced the reading and conformance policy and the external-analysis reconciliation protocol.
+**ADP 2.8.0** adds optional capability-aware agent assignment, director/lead role boundaries, resource profiles and safe model failover without mandating a harness. **ADP 2.7.x** standardized Git authorization and external-analysis intake traceability; **ADP 2.6.0** added reading policy and external-analysis reconciliation.
 
 **Author:** Frederik Smith  
 **License:** MIT

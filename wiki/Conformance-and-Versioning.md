@@ -51,6 +51,10 @@ When delegation/concurrent mutation is used:
 
 **Delegation itself is optional.** A single-agent project can be fully ADP-conformant.
 
+### Assignment-safe (conditional)
+
+When selecting or replacing agents, authority, privacy and budget eligibility precede performance preferences; successors inspect Git and evidence before retrying; no unapproved provider, elevated authority or paid fallback is assumed. Automatic model switching is optional.
+
 ### Reading-efficient
 
 Agents distinguish REQUIRED, CONDITIONAL, and REFERENCE material, establish applicability before skipping specialized sections, and never make normative requirements optional merely by deferring explanatory text.
@@ -75,7 +79,13 @@ Long-running projects should record/pin the ADP version they adopted.
 
 ## Current release
 
-**2.7.1 — 2026-10-17**
+**2.8.0 — 2026-10-23**
+
+Additions:
+
+- Capability-aware agent/model selection, bounded human/lead/worker roles, optional resource policies, three routing modes, and safe continuity across context/quota failures.
+
+**2.7.1 — 2026-10-18**
 
 Additions:
 

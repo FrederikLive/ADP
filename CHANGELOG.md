@@ -10,6 +10,15 @@
 - Added an optional, user-triggered Observatory Agent Skill discovery hint in the portable/compact ADP descriptions and generated AGENTS.md template. Full launch and installation logic stays in the Observatory repository; no normative requirement or new project file was added.
 - Added an optional, non-normative ADP-Observatory human usage guide and linked it from the README and ADP usage documentation. The tool is not a required part of ADP, and proposed launch commands are explicitly marked as not yet released.
 
+## [2.8.0] - 2026-10-23
+### Added
+- Conditional capability-aware agent/model selection, explicit human-director vs. lead/worker role authority, resource policy, and cross-model failover requirements.
+- Three optional execution modes (advisory, harness-native, external), with honest capability discovery and no automatic paid API fallback or promised runtime supervision.
+- Optional `.project/AGENT_POLICY.json` schema/example, selection and ledger metadata, and an explanatory guide/wiki page.
+- Verified successor cold-resume and independent-work continuation rules for usage limits, context pressure, and provider outages.
+### Changed
+- Synchronized compact distribution, contract and agent templates, compatibility and conformance documentation, and machine validation.
+
 ## [2.7.1] - 2026-10-18
 ### Fixed
 - Unified Git authorization across greenfield bootstrap and checkpoint commits, separating local from remote permissions.

@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml/badge.svg)](https://github.com/FrederikLive/ADP/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Protocol Version](https://img.shields.io/badge/ADP-2.7.1-blue.svg)](VERSION)
+[![Protocol Version](https://img.shields.io/badge/ADP-2.8.0-blue.svg)](VERSION)
 
 **ADP (Agent Development Protocol)** is a vendor-neutral protocol for structuring software projects so capable AI coding agents can bootstrap, understand, build, test, verify, continue, recover, and hand work to another agent with minimal unnecessary human intervention.
 
@@ -100,9 +100,13 @@ The [ADP Actions catalogue](docs/COMMANDS.md) groups optional natural-language r
 
 [ADP-Observatory](https://github.com/FrederikLive/ADP-Observatory) is a separate, optional human-facing analyzer for ADP projects. Its Rust scanner and offline HTML dashboard run in the development executable. Experimental provenance-attested CI binaries exist, but an official installer and trusted automatic download-and-run launcher are **not yet released**. See [the Observatory usage and planned launcher guide](docs/OBSERVATORY.md). No Observatory installation or additional project metadata is required for ADP conformance.
 
+### Optional: intelligent agent assignment
+
+For substantial work, ADP 2.8.0 can assess a Contract's capabilities and recommend an eligible agent/model/harness within a human director's scope, budget, privacy rules and an optional resource profile. It supports truthful advisory routing and safe context/quota handoff, and it can use a harness or separately authorized orchestrator **when one actually exists**. It does not require multi-agent tools, provide API credits, switch models automatically, or run in the background by itself. See [Capability-aware agent assignment](docs/AGENT_ORCHESTRATION.md), the [example policy](examples/AGENT_POLICY.json) and its [schema](schema/agent-policy.schema.json).
+
 ## What ADP establishes
 
-ADP defines nine core protocols:
+ADP defines nine core protocols and a conditional capability-aware assignment extension to delegated execution:
 
 1. **Bootstrap Protocol** — how a new or existing repository is initialized.
 2. **Autonomy Protocol** — what an agent may do without repeated approval.

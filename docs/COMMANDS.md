@@ -19,6 +19,10 @@ These are examples of what users may ask, **not ten mandatory agent procedures**
 
 The rest of this page gives meanings, default side effects and limitations. It does not need to be embedded into `AGENTS.md` or automatically read at startup.
 
+## Optional agent assignment requests
+
+Ask **"Which agent/model should work on this Contract?"** for a read-only eligibility/capability/resource assessment; this is a recommendation, not a model switch. Ask **"Review our agent resource policy"** for a read-only analysis of the optional `.project/AGENT_POLICY.json` and its limits. Ask **"Prepare an agent handoff"** to preserve state following the existing continuity procedure within authorized scope; this does not launch another provider or guarantee background operation. For rationale and examples, see [Capability-aware assignment](AGENT_ORCHESTRATION.md).
+
 ## Core project navigation
 
 | Say something like… | Intended action | Default effect |
