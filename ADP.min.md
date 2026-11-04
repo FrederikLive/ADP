@@ -264,6 +264,8 @@ Deletion:
 - ambiguous valuable untracked material MAY move to `.archive/` with manifest;
 - do not archive every ordinary tracked deletion.
 
+**Scratch hygiene (conditional):** Keep agent-created probes, patches, logs and temporary files inside ignored `.agent/scratch/<contract-or-work-unit>/<purpose>/` (or the project's existing equivalent), not loose root `scratch_*` files. Proposed root ignore `/scratch_*` matches files **and** folders, whereas `/scratch_*/` misses files; check `git check-ignore -v` and avoid broad `/config/`, `/worktrees/` or `*.pem` ignores. Inspect each worktree and safe metadata before cleanup; classify active WIP, durable evidence, private secrets, movable probes, disposable outputs and unknown material. A known agent-owned reproducible nonsecret output MAY be cleaned when unused; never bulk-delete unknown/untracked/user/other-agent work, source DBs, backups, secrets or active runtimes. Preserve/quarantine ambiguous files and obtain itemized authorization when needed; never `git clean -fdx` as housekeeping. Put sanitized durable findings in canonical evidence; never leave unique state only under `.agent/`. Cleanup is conditional, not an added mandatory file/checkpoint.
+
 `.agent/` = ephemeral local state. `.project/` = durable tracked operational state when used.
 
 ## 14. Security and external side effects
