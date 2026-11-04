@@ -31,7 +31,7 @@ if shutil.which("git") is None:
 with tempfile.TemporaryDirectory(prefix="adp_scratch_ignore_") as d:
     work = Path(d)
     subprocess.run(["git", "init", "-q", str(work)], check=True, capture_output=True)
-    (work / ".gitignore").write_text(".agent/\\n/scratch_*\\n/scratch-*\\n", encoding="utf-8")
+    (work / ".gitignore").write_text(chr(10).join([".agent/", "/scratch_*", "/scratch-*", ""]), encoding="utf-8")
     want_ignored = (
         "scratch_probe.php",
         "scratch_d002/remote.env",
@@ -48,7 +48,7 @@ with tempfile.TemporaryDirectory(prefix="adp_scratch_ignore_") as d:
     for rel in want_ignored + want_visible:
         file = work / rel
         file.parent.mkdir(parents=True, exist_ok=True)
-        file.write_text("test fixture\\n", encoding="utf-8")
+        file.write_text("test fixture", encoding="utf-8")
     for rel in want_ignored:
         p = subprocess.run(["git", "-C", str(work), "check-ignore", "-q", "--", rel])
         assert p.returncode == 0, f"Scratch should be ignored: {rel}"
