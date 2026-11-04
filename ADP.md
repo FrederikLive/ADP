@@ -3468,7 +3468,8 @@ Use verification states: VERIFIED / FAILED / NOT RUN / NOT AVAILABLE.
 
 - Never expose or commit secrets.
 - Do not discard unrelated user changes.
-- Do not delete unknown untracked user files.
+- Keep temporary agent files under ignored `.agent/scratch/<contract-id>/<purpose>/` (or an existing equivalent), not loose root scratch files; section 15 governs conditional inventory/cleanup.
+- Never delete unknown untracked user/agent files, active local runtimes, backups or credential-bearing material as generic scratch.
 - Tracked obsolete files may be removed normally when the change requires it; Git is the recovery mechanism.
 - Ask before destructive production/shared operations, history rewrites, force pushes, publishing, paid provisioning, credential rotation, or production deployment.
 - <project-specific safety boundaries>
