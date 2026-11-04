@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Protocol (proposed compatible addition)
+- Clarified conditional agent scratch hygiene: use ignored contract-scoped `.agent/scratch/`, inventory each worktree, protect untracked WIP/credentials/test databases, validate file-and-folder root scratch ignore patterns, and require itemized authorization before uncertain deletion. Aligned `ADP.min.md` and generated `AGENTS.md` template; no new mandatory manifest, cleanup job, or permission gate. Version remains 2.8.0 until maintainer schedules a compatible normative release.
+
 ### Documentation
 - Rebranded the optional human request catalogue as **ADP Actions** while retaining `docs/COMMANDS.md` as its stable link; added evidence-based, read-only examples for project blockers, decision rationale, documentation consistency and changes since a milestone. Kept the full guide on demand, not in normal agent context.
 - Added [docs/UPDATING_ADP.md](docs/UPDATING_ADP.md), a non-normative, user-requested guide for checking/updating/migrating ADP integrations in copied-file, pinned-submodule, mounted and remotely referenced projects while preserving local instructions.
