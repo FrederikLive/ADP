@@ -2310,13 +2310,15 @@ Exact names depend on stack.
 
 Do NOT destroy unknown untracked files casually.
 
-They may contain user work.
+They may contain user work, secrets, uncommitted agent output, or the only copy of a recovery artifact.
 
 If an unknown untracked file blocks work:
 
-- inspect it;
-- preserve it;
+- inspect **safe metadata first** without printing secrets;
+- preserve it and check for active processes, worktrees, references, and ownership;
 - ask if its purpose cannot be safely inferred.
+
+For bounded, itemized scratch cleanup, follow the workspace hygiene procedure in section 15. An ignored file is **not** necessarily disposable.
 
 ## 14.4 Ambiguous valuable artifacts
 
@@ -2351,39 +2353,51 @@ Default:
 
 ---
 
-# 15. Local agent workspace state
+# 15. Local agent workspace state and scratch hygiene
 
-Do not pollute the repository with ephemeral reasoning logs.
+Do not pollute the repository root with ephemeral reasoning logs, probes, ad-hoc scripts, test output, generated diffs, or agent scratch files.
 
-If the harness or workflow benefits from local transient state, use a dedicated ignored directory such as:
-
-```text
-.agent/
-```
-
-Possible contents:
+**Default convention (adapt to an existing equivalent):** create non-secret temporary work under the already-ignored `.agent/scratch/<contract-id>/<purpose>/` (or `.agent/scratch/<work-unit>/<purpose>/` if no Contract exists). Other local state may use `.agent/tmp/`, `.agent/cache/`, or `.agent/local-notes/` only when needed; do not generate empty ceremonial directories. Separate simultaneous agents' writable scratch paths or worktrees. Don't use root `scratch_*` names as a routine workspace. If a tool requires a root temporary file, use a uniquely named, short-lived, ignored path and relocate or remove it once safe.
 
 ```text
-.agent/
-├── scratch/
-├── evidence/
-├── tmp/
-└── local-notes/
+.agent/                             # normally ignored; local and disposable only when proven
+└── scratch/
+    ├── C092/mysql-rehearsal/
+    └── C085/feed-probe/
+.project/                           # optional, small TRACKED authoritative operational state
+docs/work/evidence/                # example only: durable, reviewed NON-SECRET proof, if project uses this layout
 ```
 
-Default `.gitignore`:
+`.agent/` is **not** durable project memory or a security boundary. Do not store authoritative work state only there, and never assume ignoring it makes passwords, private data, backups, or keys safe. Place protected secrets and sensitive dumps in access-controlled operator locations; avoid copying them into Git, issue reports, logs or shared handoffs. Promote useful **sanitized** findings to the project's existing canonical code/test/evidence/Contract/continuity owner. Do not promote raw scratch indiscriminately.
+
+## 15.1 Ignore rules and portability
+
+Use the project's existing `.gitignore` conventions, inspect tracked filenames before expanding rules, and keep ignores **scoped** rather than hiding arbitrary source trees. For new projects a minimal example is:
 
 ```gitignore
 .agent/
+# Optional ONLY when legacy scratch output actually exists in the project root:
+/scratch_*
+/scratch-*
 ```
 
-Do not store authoritative project facts only inside `.agent/`.
+**`/scratch_*` matches root-level files AND directories** (for example `scratch_probe.php` and `scratch_d002/`); **`/scratch_*/` matches directories only** and misses loose files. Add project-specific exact patterns for `tmp/`, `temp/`, private environment files and test runtimes only after checking what they would hide; do NOT blanket-ignore `/config/`, `/worktrees/`, all `*.pem`, or other possibly tracked project data. Existing tracked files remain tracked regardless of new ignore rules.
 
-`.agent/` is ephemeral/local and should normally be ignored.
+Validate prospective rules on real representative paths with `git check-ignore -v -- <path>`, `git ls-files`, and `git status --short`; ensure legitimate source, sample config, evidence and release artifacts are not accidentally concealed. Never use `git add -f` on ignored temporary or credential files without separate justified review.
+
+## 15.2 Scratch inventory and safe cleanup
+
+Before broad cleanup or handing an agent's workspace to another agent:
+
+1. **Inventory each writable worktree separately**, without mutations: `git status --porcelain=v1 -uall`, `git worktree list --porcelain`, `git ls-files --others --exclude-standard`, and a **bounded** `git ls-files --others --ignored --exclude-standard` when useful. Record only safe metadata (relative path, file count/size/age, tracked/ignored state, owning agent/Contract and active dependencies). Avoid following symlinks/junctions outside the repository and avoid printing sensitive file contents.
+2. **Classify** `KEEP_ACTIVE` (running agent/runtime, unresolved WIP), `KEEP_DURABLE` (unique patches, tests, recovery evidence), `PRIVATE_SECRET` (credentials, dumps, keys), `MOVE_EPHEMERAL` (still-useful non-secret probes), `DELETE_CANDIDATE` (clearly redundant, reproducible output), or `UNKNOWN`. Treat `UNKNOWN` and `PRIVATE_SECRET` as preserve-by-default.
+3. **Preserve first:** before moving a file, check script references, any open process/database dependence, whether another worktree owns it, and whether it is the last copy. Keep sensitive artifacts out of versioned archive/evidence. If material must be displaced, quarantine at exact scoped paths with a recoverable manifest and verified integrity, under the project's retention/access policy.
+4. **Clean proportionally:** an agent MAY remove its own clearly identified, non-secret, reproducible disposable outputs within the existing Authorization Envelope once no test/job uses them. Unknown user/other-agent files, backups, source DBs, secrets, ambiguous evidence, and large runtime directories MUST NOT be bulk-deleted based on names, age, ignore status, or a passing test; propose an itemized action and obtain owner authorization when needed. Never run `git clean -fdx`, broad recursive wildcard deletes, or `reset --hard` as a scratch cleanup shortcut.
+5. **Verify and resume:** confirm Git status and important tests/worktrees unchanged; record only a concise sanitized result and exact deferred cleanup candidates in the existing continuity/evidence channel. Cleanup does not suspend another authorized Contract or create a mandatory tracking document.
+
+This workflow is **conditional** when scratch, cleanup or multi-agent handoffs actually matter; it is not a new mandatory manifest, scheduled job, command, or routine permission gate.
 
 By contrast, `.project/` is reserved for small, structured, **tracked operational metadata** that must survive agent/session replacement, such as optional `WORK.json`.
-
-Any durable information discovered during work must be promoted to the correct canonical document, test, configuration, issue, or code.
 
 ---
 
